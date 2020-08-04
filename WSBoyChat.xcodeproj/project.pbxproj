@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		092AE39DC412C14B53A4F1F8 /* Pods_WSBoyChatTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7A8E881C3B2829D689716B1 /* Pods_WSBoyChatTests.framework */; };
 		BA55BBB224D1D3BB00FF3ADD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA55BBB124D1D3BB00FF3ADD /* AppDelegate.swift */; };
 		BA55BBB424D1D3BB00FF3ADD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA55BBB324D1D3BB00FF3ADD /* ViewController.swift */; };
 		BA55BBB724D1D3BB00FF3ADD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA55BBB524D1D3BB00FF3ADD /* Main.storyboard */; };
@@ -14,6 +15,8 @@
 		BA55BBBC24D1D3BC00FF3ADD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA55BBBA24D1D3BC00FF3ADD /* LaunchScreen.storyboard */; };
 		BA55BBC724D1D3BC00FF3ADD /* WSBoyChatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA55BBC624D1D3BC00FF3ADD /* WSBoyChatTests.swift */; };
 		BA55BBD224D1D3BC00FF3ADD /* WSBoyChatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA55BBD124D1D3BC00FF3ADD /* WSBoyChatUITests.swift */; };
+		D010BC58B17CDE40419C2487 /* Pods_WSBoyChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE5D33637F439FF8A7932326 /* Pods_WSBoyChat.framework */; };
+		ED5E3EB2C8E2A6772556BCDA /* Pods_WSBoyChat_WSBoyChatUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E742C5906E6A741CCEE7DAAF /* Pods_WSBoyChat_WSBoyChatUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +37,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0A4AFBB9995EA71B6E94003F /* Pods-WSBoyChatTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WSBoyChatTests.release.xcconfig"; path = "Target Support Files/Pods-WSBoyChatTests/Pods-WSBoyChatTests.release.xcconfig"; sourceTree = "<group>"; };
+		2F36BB5EA82CF288FDD2F50B /* Pods-WSBoyChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WSBoyChat.debug.xcconfig"; path = "Target Support Files/Pods-WSBoyChat/Pods-WSBoyChat.debug.xcconfig"; sourceTree = "<group>"; };
+		78C307527C1DD75BC313D4C7 /* Pods-WSBoyChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WSBoyChat.release.xcconfig"; path = "Target Support Files/Pods-WSBoyChat/Pods-WSBoyChat.release.xcconfig"; sourceTree = "<group>"; };
+		796878AD40038EFB289E8051 /* Pods-WSBoyChatTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WSBoyChatTests.debug.xcconfig"; path = "Target Support Files/Pods-WSBoyChatTests/Pods-WSBoyChatTests.debug.xcconfig"; sourceTree = "<group>"; };
+		90C8C8CBC440987B16661A3D /* Pods-WSBoyChat-WSBoyChatUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WSBoyChat-WSBoyChatUITests.release.xcconfig"; path = "Target Support Files/Pods-WSBoyChat-WSBoyChatUITests/Pods-WSBoyChat-WSBoyChatUITests.release.xcconfig"; sourceTree = "<group>"; };
 		BA55BBAE24D1D3BB00FF3ADD /* WSBoyChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WSBoyChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA55BBB124D1D3BB00FF3ADD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BA55BBB324D1D3BB00FF3ADD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +55,10 @@
 		BA55BBCD24D1D3BC00FF3ADD /* WSBoyChatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WSBoyChatUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA55BBD124D1D3BC00FF3ADD /* WSBoyChatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSBoyChatUITests.swift; sourceTree = "<group>"; };
 		BA55BBD324D1D3BC00FF3ADD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C1478BF06E7FA1B2AEEA41F8 /* Pods-WSBoyChat-WSBoyChatUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WSBoyChat-WSBoyChatUITests.debug.xcconfig"; path = "Target Support Files/Pods-WSBoyChat-WSBoyChatUITests/Pods-WSBoyChat-WSBoyChatUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		E742C5906E6A741CCEE7DAAF /* Pods_WSBoyChat_WSBoyChatUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WSBoyChat_WSBoyChatUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E7A8E881C3B2829D689716B1 /* Pods_WSBoyChatTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WSBoyChatTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE5D33637F439FF8A7932326 /* Pods_WSBoyChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WSBoyChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D010BC58B17CDE40419C2487 /* Pods_WSBoyChat.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -61,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				092AE39DC412C14B53A4F1F8 /* Pods_WSBoyChatTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,12 +82,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ED5E3EB2C8E2A6772556BCDA /* Pods_WSBoyChat_WSBoyChatUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		71FC6B0C063F19C44D9D0559 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FE5D33637F439FF8A7932326 /* Pods_WSBoyChat.framework */,
+				E742C5906E6A741CCEE7DAAF /* Pods_WSBoyChat_WSBoyChatUITests.framework */,
+				E7A8E881C3B2829D689716B1 /* Pods_WSBoyChatTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		BA55BBA524D1D3BB00FF3ADD = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +106,8 @@
 				BA55BBC524D1D3BC00FF3ADD /* WSBoyChatTests */,
 				BA55BBD024D1D3BC00FF3ADD /* WSBoyChatUITests */,
 				BA55BBAF24D1D3BB00FF3ADD /* Products */,
+				D5F6AD592D99F7CCD3736454 /* Pods */,
+				71FC6B0C063F19C44D9D0559 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -125,6 +152,20 @@
 			path = WSBoyChatUITests;
 			sourceTree = "<group>";
 		};
+		D5F6AD592D99F7CCD3736454 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2F36BB5EA82CF288FDD2F50B /* Pods-WSBoyChat.debug.xcconfig */,
+				78C307527C1DD75BC313D4C7 /* Pods-WSBoyChat.release.xcconfig */,
+				C1478BF06E7FA1B2AEEA41F8 /* Pods-WSBoyChat-WSBoyChatUITests.debug.xcconfig */,
+				90C8C8CBC440987B16661A3D /* Pods-WSBoyChat-WSBoyChatUITests.release.xcconfig */,
+				796878AD40038EFB289E8051 /* Pods-WSBoyChatTests.debug.xcconfig */,
+				0A4AFBB9995EA71B6E94003F /* Pods-WSBoyChatTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,9 +173,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BA55BBD624D1D3BC00FF3ADD /* Build configuration list for PBXNativeTarget "WSBoyChat" */;
 			buildPhases = (
+				ACB68D48673F054FB75A5995 /* [CP] Check Pods Manifest.lock */,
 				BA55BBAA24D1D3BB00FF3ADD /* Sources */,
 				BA55BBAB24D1D3BB00FF3ADD /* Frameworks */,
 				BA55BBAC24D1D3BB00FF3ADD /* Resources */,
+				92422A8AE73B779F0C40E6C8 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -149,6 +192,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BA55BBD924D1D3BC00FF3ADD /* Build configuration list for PBXNativeTarget "WSBoyChatTests" */;
 			buildPhases = (
+				2A27DB9AE0CE6F78D66DE5B3 /* [CP] Check Pods Manifest.lock */,
 				BA55BBBE24D1D3BC00FF3ADD /* Sources */,
 				BA55BBBF24D1D3BC00FF3ADD /* Frameworks */,
 				BA55BBC024D1D3BC00FF3ADD /* Resources */,
@@ -167,9 +211,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BA55BBDC24D1D3BC00FF3ADD /* Build configuration list for PBXNativeTarget "WSBoyChatUITests" */;
 			buildPhases = (
+				B8A5B6997DFA86F15325BA3E /* [CP] Check Pods Manifest.lock */,
 				BA55BBC924D1D3BC00FF3ADD /* Sources */,
 				BA55BBCA24D1D3BC00FF3ADD /* Frameworks */,
 				BA55BBCB24D1D3BC00FF3ADD /* Resources */,
+				F2C880DBD7ACC5E8C5CC5F31 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -250,6 +296,109 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2A27DB9AE0CE6F78D66DE5B3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WSBoyChatTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		92422A8AE73B779F0C40E6C8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WSBoyChat/Pods-WSBoyChat-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WSBoyChat/Pods-WSBoyChat-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WSBoyChat/Pods-WSBoyChat-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ACB68D48673F054FB75A5995 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WSBoyChat-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B8A5B6997DFA86F15325BA3E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WSBoyChat-WSBoyChatUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F2C880DBD7ACC5E8C5CC5F31 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WSBoyChat-WSBoyChatUITests/Pods-WSBoyChat-WSBoyChatUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WSBoyChat-WSBoyChatUITests/Pods-WSBoyChat-WSBoyChatUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WSBoyChat-WSBoyChatUITests/Pods-WSBoyChat-WSBoyChatUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		BA55BBAA24D1D3BB00FF3ADD /* Sources */ = {
@@ -430,6 +579,7 @@
 		};
 		BA55BBD724D1D3BC00FF3ADD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2F36BB5EA82CF288FDD2F50B /* Pods-WSBoyChat.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -447,6 +597,7 @@
 		};
 		BA55BBD824D1D3BC00FF3ADD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 78C307527C1DD75BC313D4C7 /* Pods-WSBoyChat.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -464,6 +615,7 @@
 		};
 		BA55BBDA24D1D3BC00FF3ADD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 796878AD40038EFB289E8051 /* Pods-WSBoyChatTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -484,6 +636,7 @@
 		};
 		BA55BBDB24D1D3BC00FF3ADD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0A4AFBB9995EA71B6E94003F /* Pods-WSBoyChatTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -504,6 +657,7 @@
 		};
 		BA55BBDD24D1D3BC00FF3ADD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C1478BF06E7FA1B2AEEA41F8 /* Pods-WSBoyChat-WSBoyChatUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -523,6 +677,7 @@
 		};
 		BA55BBDE24D1D3BC00FF3ADD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 90C8C8CBC440987B16661A3D /* Pods-WSBoyChat-WSBoyChatUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

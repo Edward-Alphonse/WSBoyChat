@@ -1,0 +1,6 @@
+framework module Pods_WSBoyChat_WSBoyChatUITests {
+  umbrella header "Pods-WSBoyChat-WSBoyChatUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
