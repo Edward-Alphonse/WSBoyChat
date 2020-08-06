@@ -33,7 +33,12 @@ class ViewController: UIViewController {
             maker.center.equalToSuperview()
         }
         button.rx.tap.bind {[weak self] () in
-            self?.present(<#T##viewControllerToPresent: UIViewController##UIViewController#>, animated: true, completion: nil)
+            let loginViewController = WSBLoginViewController()
+//            self?.present(loginViewController, animated: true, completion: nil)
+            let viewController = WSBNavigationViewController(rootViewController: loginViewController)
+            viewController.modalPresentationStyle = .fullScreen
+            self?.present(viewController, animated: true, completion: nil)
+            
         }.disposed(by: disposeBag)
     }
     

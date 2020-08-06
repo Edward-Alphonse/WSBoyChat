@@ -16,8 +16,14 @@
 		BA55BBC724D1D3BC00FF3ADD /* WSBoyChatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA55BBC624D1D3BC00FF3ADD /* WSBoyChatTests.swift */; };
 		BA55BBD224D1D3BC00FF3ADD /* WSBoyChatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA55BBD124D1D3BC00FF3ADD /* WSBoyChatUITests.swift */; };
 		D010BC58B17CDE40419C2487 /* Pods_WSBoyChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE5D33637F439FF8A7932326 /* Pods_WSBoyChat.framework */; };
+		E8C3266324DADDF3008CA24D /* WSBBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C3266224DADDF3008CA24D /* WSBBaseViewController.swift */; };
+		E8C3266524DAE33E008CA24D /* WSBNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C3266424DAE33E008CA24D /* WSBNavigationBar.swift */; };
+		E8C3266724DAE3A8008CA24D /* UIView+CGRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C3266624DAE3A8008CA24D /* UIView+CGRect.swift */; };
+		E8C3266924DAEE2B008CA24D /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C3266824DAEE2B008CA24D /* Utility.swift */; };
+		E8C3336F24DBE7AB008CA24D /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C3336E24DBE7AB008CA24D /* UIColor+Extension.swift */; };
 		E8C3FD3724D9AD2E008CA24D /* WSBLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C3FD3624D9AD2E008CA24D /* WSBLoginViewController.swift */; };
 		E8C3FD3924D9AD44008CA24D /* WSBLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C3FD3824D9AD44008CA24D /* WSBLoginViewModel.swift */; };
+		E8C3FD3C24DA732C008CA24D /* WSBNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C3FD3B24DA732C008CA24D /* WSBNavigationViewController.swift */; };
 		ED5E3EB2C8E2A6772556BCDA /* Pods_WSBoyChat_WSBoyChatUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E742C5906E6A741CCEE7DAAF /* Pods_WSBoyChat_WSBoyChatUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -60,8 +66,14 @@
 		C1478BF06E7FA1B2AEEA41F8 /* Pods-WSBoyChat-WSBoyChatUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WSBoyChat-WSBoyChatUITests.debug.xcconfig"; path = "Target Support Files/Pods-WSBoyChat-WSBoyChatUITests/Pods-WSBoyChat-WSBoyChatUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		E742C5906E6A741CCEE7DAAF /* Pods_WSBoyChat_WSBoyChatUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WSBoyChat_WSBoyChatUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7A8E881C3B2829D689716B1 /* Pods_WSBoyChatTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WSBoyChatTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E8C3266224DADDF3008CA24D /* WSBBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSBBaseViewController.swift; sourceTree = "<group>"; };
+		E8C3266424DAE33E008CA24D /* WSBNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSBNavigationBar.swift; sourceTree = "<group>"; };
+		E8C3266624DAE3A8008CA24D /* UIView+CGRect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+CGRect.swift"; sourceTree = "<group>"; };
+		E8C3266824DAEE2B008CA24D /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+		E8C3336E24DBE7AB008CA24D /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		E8C3FD3624D9AD2E008CA24D /* WSBLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSBLoginViewController.swift; sourceTree = "<group>"; };
 		E8C3FD3824D9AD44008CA24D /* WSBLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSBLoginViewModel.swift; sourceTree = "<group>"; };
+		E8C3FD3B24DA732C008CA24D /* WSBNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSBNavigationViewController.swift; sourceTree = "<group>"; };
 		FE5D33637F439FF8A7932326 /* Pods_WSBoyChat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WSBoyChat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -130,11 +142,17 @@
 			children = (
 				BA55BBB124D1D3BB00FF3ADD /* AppDelegate.swift */,
 				BA55BBB324D1D3BB00FF3ADD /* ViewController.swift */,
+				E8C3266624DAE3A8008CA24D /* UIView+CGRect.swift */,
+				E8C3336E24DBE7AB008CA24D /* UIColor+Extension.swift */,
 				BA55BBB524D1D3BB00FF3ADD /* Main.storyboard */,
 				BA55BBB824D1D3BC00FF3ADD /* Assets.xcassets */,
 				BA55BBBA24D1D3BC00FF3ADD /* LaunchScreen.storyboard */,
 				BA55BBBD24D1D3BC00FF3ADD /* Info.plist */,
 				E8C3FD3A24D9AD4E008CA24D /* Login */,
+				E8C3FD3B24DA732C008CA24D /* WSBNavigationViewController.swift */,
+				E8C3266224DADDF3008CA24D /* WSBBaseViewController.swift */,
+				E8C3266424DAE33E008CA24D /* WSBNavigationBar.swift */,
+				E8C3266824DAEE2B008CA24D /* Utility.swift */,
 			);
 			path = WSBoyChat;
 			sourceTree = "<group>";
@@ -418,10 +436,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8C3266324DADDF3008CA24D /* WSBBaseViewController.swift in Sources */,
 				BA55BBB424D1D3BB00FF3ADD /* ViewController.swift in Sources */,
+				E8C3266924DAEE2B008CA24D /* Utility.swift in Sources */,
+				E8C3266724DAE3A8008CA24D /* UIView+CGRect.swift in Sources */,
 				BA55BBB224D1D3BB00FF3ADD /* AppDelegate.swift in Sources */,
 				E8C3FD3724D9AD2E008CA24D /* WSBLoginViewController.swift in Sources */,
+				E8C3FD3C24DA732C008CA24D /* WSBNavigationViewController.swift in Sources */,
+				E8C3266524DAE33E008CA24D /* WSBNavigationBar.swift in Sources */,
 				E8C3FD3924D9AD44008CA24D /* WSBLoginViewModel.swift in Sources */,
+				E8C3336F24DBE7AB008CA24D /* UIColor+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
