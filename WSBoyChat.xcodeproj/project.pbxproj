@@ -21,6 +21,13 @@
 		E8C3266724DAE3A8008CA24D /* UIView+CGRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C3266624DAE3A8008CA24D /* UIView+CGRect.swift */; };
 		E8C3266924DAEE2B008CA24D /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C3266824DAEE2B008CA24D /* Utility.swift */; };
 		E8C3336F24DBE7AB008CA24D /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C3336E24DBE7AB008CA24D /* UIColor+Extension.swift */; };
+		E8C3337124DBF86A008CA24D /* WSBLoginInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C3337024DBF86A008CA24D /* WSBLoginInputView.swift */; };
+		E8C3337324DBFC52008CA24D /* WSBLoginViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C3337224DBFC52008CA24D /* WSBLoginViewCell.swift */; };
+		E8C3783F24DC2E93008CA24D /* WSBLoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C3783E24DC2E93008CA24D /* WSBLoginService.swift */; };
+		E8C392D724DC3466008CA24D /* WSBUserRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C392D624DC3466008CA24D /* WSBUserRegisterViewController.swift */; };
+		E8C39FDF24DC373B008CA24D /* UIViewController+Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C39FDE24DC373B008CA24D /* UIViewController+Router.swift */; };
+		E8C3ACD124DC3D83008CA24D /* WSBUserRegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C3ACD024DC3D83008CA24D /* WSBUserRegisterViewModel.swift */; };
+		E8C3B9C324DC43A8008CA24D /* WSBURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C3B9C224DC43A8008CA24D /* WSBURL.swift */; };
 		E8C3FD3724D9AD2E008CA24D /* WSBLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C3FD3624D9AD2E008CA24D /* WSBLoginViewController.swift */; };
 		E8C3FD3924D9AD44008CA24D /* WSBLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C3FD3824D9AD44008CA24D /* WSBLoginViewModel.swift */; };
 		E8C3FD3C24DA732C008CA24D /* WSBNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C3FD3B24DA732C008CA24D /* WSBNavigationViewController.swift */; };
@@ -71,6 +78,13 @@
 		E8C3266624DAE3A8008CA24D /* UIView+CGRect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+CGRect.swift"; sourceTree = "<group>"; };
 		E8C3266824DAEE2B008CA24D /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		E8C3336E24DBE7AB008CA24D /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		E8C3337024DBF86A008CA24D /* WSBLoginInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSBLoginInputView.swift; sourceTree = "<group>"; };
+		E8C3337224DBFC52008CA24D /* WSBLoginViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSBLoginViewCell.swift; sourceTree = "<group>"; };
+		E8C3783E24DC2E93008CA24D /* WSBLoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSBLoginService.swift; sourceTree = "<group>"; };
+		E8C392D624DC3466008CA24D /* WSBUserRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSBUserRegisterViewController.swift; sourceTree = "<group>"; };
+		E8C39FDE24DC373B008CA24D /* UIViewController+Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Router.swift"; sourceTree = "<group>"; };
+		E8C3ACD024DC3D83008CA24D /* WSBUserRegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSBUserRegisterViewModel.swift; sourceTree = "<group>"; };
+		E8C3B9C224DC43A8008CA24D /* WSBURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSBURL.swift; sourceTree = "<group>"; };
 		E8C3FD3624D9AD2E008CA24D /* WSBLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSBLoginViewController.swift; sourceTree = "<group>"; };
 		E8C3FD3824D9AD44008CA24D /* WSBLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSBLoginViewModel.swift; sourceTree = "<group>"; };
 		E8C3FD3B24DA732C008CA24D /* WSBNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSBNavigationViewController.swift; sourceTree = "<group>"; };
@@ -142,8 +156,7 @@
 			children = (
 				BA55BBB124D1D3BB00FF3ADD /* AppDelegate.swift */,
 				BA55BBB324D1D3BB00FF3ADD /* ViewController.swift */,
-				E8C3266624DAE3A8008CA24D /* UIView+CGRect.swift */,
-				E8C3336E24DBE7AB008CA24D /* UIColor+Extension.swift */,
+				E8C39FDD24DC3719008CA24D /* Utility */,
 				BA55BBB524D1D3BB00FF3ADD /* Main.storyboard */,
 				BA55BBB824D1D3BC00FF3ADD /* Assets.xcassets */,
 				BA55BBBA24D1D3BC00FF3ADD /* LaunchScreen.storyboard */,
@@ -152,7 +165,7 @@
 				E8C3FD3B24DA732C008CA24D /* WSBNavigationViewController.swift */,
 				E8C3266224DADDF3008CA24D /* WSBBaseViewController.swift */,
 				E8C3266424DAE33E008CA24D /* WSBNavigationBar.swift */,
-				E8C3266824DAEE2B008CA24D /* Utility.swift */,
+				E8C392D824DC3472008CA24D /* Register */,
 			);
 			path = WSBoyChat;
 			sourceTree = "<group>";
@@ -188,11 +201,35 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		E8C392D824DC3472008CA24D /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				E8C392D624DC3466008CA24D /* WSBUserRegisterViewController.swift */,
+				E8C3ACD024DC3D83008CA24D /* WSBUserRegisterViewModel.swift */,
+				E8C3B9C224DC43A8008CA24D /* WSBURL.swift */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
+		E8C39FDD24DC3719008CA24D /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				E8C3266624DAE3A8008CA24D /* UIView+CGRect.swift */,
+				E8C3336E24DBE7AB008CA24D /* UIColor+Extension.swift */,
+				E8C3266824DAEE2B008CA24D /* Utility.swift */,
+				E8C39FDE24DC373B008CA24D /* UIViewController+Router.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
 		E8C3FD3A24D9AD4E008CA24D /* Login */ = {
 			isa = PBXGroup;
 			children = (
 				E8C3FD3624D9AD2E008CA24D /* WSBLoginViewController.swift */,
 				E8C3FD3824D9AD44008CA24D /* WSBLoginViewModel.swift */,
+				E8C3337024DBF86A008CA24D /* WSBLoginInputView.swift */,
+				E8C3337224DBFC52008CA24D /* WSBLoginViewCell.swift */,
+				E8C3783E24DC2E93008CA24D /* WSBLoginService.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -438,14 +475,21 @@
 			files = (
 				E8C3266324DADDF3008CA24D /* WSBBaseViewController.swift in Sources */,
 				BA55BBB424D1D3BB00FF3ADD /* ViewController.swift in Sources */,
+				E8C3337124DBF86A008CA24D /* WSBLoginInputView.swift in Sources */,
 				E8C3266924DAEE2B008CA24D /* Utility.swift in Sources */,
 				E8C3266724DAE3A8008CA24D /* UIView+CGRect.swift in Sources */,
+				E8C3ACD124DC3D83008CA24D /* WSBUserRegisterViewModel.swift in Sources */,
 				BA55BBB224D1D3BB00FF3ADD /* AppDelegate.swift in Sources */,
 				E8C3FD3724D9AD2E008CA24D /* WSBLoginViewController.swift in Sources */,
 				E8C3FD3C24DA732C008CA24D /* WSBNavigationViewController.swift in Sources */,
 				E8C3266524DAE33E008CA24D /* WSBNavigationBar.swift in Sources */,
+				E8C3337324DBFC52008CA24D /* WSBLoginViewCell.swift in Sources */,
 				E8C3FD3924D9AD44008CA24D /* WSBLoginViewModel.swift in Sources */,
+				E8C3783F24DC2E93008CA24D /* WSBLoginService.swift in Sources */,
 				E8C3336F24DBE7AB008CA24D /* UIColor+Extension.swift in Sources */,
+				E8C3B9C324DC43A8008CA24D /* WSBURL.swift in Sources */,
+				E8C39FDF24DC373B008CA24D /* UIViewController+Router.swift in Sources */,
+				E8C392D724DC3466008CA24D /* WSBUserRegisterViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
