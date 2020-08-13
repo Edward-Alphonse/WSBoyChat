@@ -33,12 +33,12 @@ class ViewController: UIViewController {
         }
         button.rx.tap.bind {[weak self] () in
             guard let `self` = self else { return }
-            let loginViewController = WSBLoginViewController()
+            let loginViewController = WSBChatViewController()
             let viewController = WSBNavigationViewController(rootViewController: loginViewController)
 
             viewController.modalPresentationStyle = .fullScreen
-//            self.present(viewController, animated: true, completion: nil)
-            WSBLoginService.shared.client()
+            self.present(viewController, animated: true, completion: nil)
+//            WSBLoginService.shared.client()
             
         }.disposed(by: disposeBag)
     }

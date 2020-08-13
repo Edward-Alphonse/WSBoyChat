@@ -10,12 +10,38 @@ import Foundation
 import UIKit
 
 extension UIView {
+    var x: CGFloat {
+        set {
+            self.frame.origin = CGPoint(x: newValue, y: self.y)
+        }
+        get {
+            return self.frame.origin.x
+        }
+    }
+    var y: CGFloat {
+        set {
+            self.frame.origin = CGPoint(x: self.x, y: newValue)
+        }
+        get {
+            return self.frame.origin.y
+        }
+    }
     var width: CGFloat {
-        return self.frame.width
+        set {
+            self.frame.size = CGSize(width: newValue, height: self.height)
+        }
+        get {
+            return self.frame.width
+        }
     }
     
     var height: CGFloat {
-        return self.frame.height
+        set {
+            self.frame.size = CGSize(width: self.width, height: newValue)
+        }
+        get {
+            return self.frame.height
+        }
     }
     
     var left: CGFloat {
