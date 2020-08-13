@@ -37,7 +37,8 @@ class ViewController: UIViewController {
             let viewController = WSBNavigationViewController(rootViewController: loginViewController)
 
             viewController.modalPresentationStyle = .fullScreen
-            self.present(viewController, animated: true, completion: nil)
+//            self.present(viewController, animated: true, completion: nil)
+            WSBLoginService.shared.client()
             
         }.disposed(by: disposeBag)
     }
