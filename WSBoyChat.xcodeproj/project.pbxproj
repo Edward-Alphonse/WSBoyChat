@@ -22,7 +22,6 @@
 		E8C3266924DAEE2B008CA24D /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C3266824DAEE2B008CA24D /* Utility.swift */; };
 		E8C3336F24DBE7AB008CA24D /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C3336E24DBE7AB008CA24D /* UIColor+Extension.swift */; };
 		E8C3337124DBF86A008CA24D /* WSBLoginInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C3337024DBF86A008CA24D /* WSBLoginInputView.swift */; };
-		E8C3337324DBFC52008CA24D /* WSBLoginViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C3337224DBFC52008CA24D /* WSBLoginViewCell.swift */; };
 		E8C3783F24DC2E93008CA24D /* WSBLoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C3783E24DC2E93008CA24D /* WSBLoginService.swift */; };
 		E8C392D724DC3466008CA24D /* WSBUserRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C392D624DC3466008CA24D /* WSBUserRegisterViewController.swift */; };
 		E8C39FDF24DC373B008CA24D /* UIViewController+Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C39FDE24DC373B008CA24D /* UIViewController+Router.swift */; };
@@ -31,6 +30,7 @@
 		E8C3FD3724D9AD2E008CA24D /* WSBLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C3FD3624D9AD2E008CA24D /* WSBLoginViewController.swift */; };
 		E8C3FD3924D9AD44008CA24D /* WSBLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C3FD3824D9AD44008CA24D /* WSBLoginViewModel.swift */; };
 		E8C3FD3C24DA732C008CA24D /* WSBNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C3FD3B24DA732C008CA24D /* WSBNavigationViewController.swift */; };
+		E8E5503224E1A9CD001C6509 /* FSToaster.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C3982924E06B48008CA24D /* FSToaster.swift */; };
 		ED5E3EB2C8E2A6772556BCDA /* Pods_WSBoyChat_WSBoyChatUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E742C5906E6A741CCEE7DAAF /* Pods_WSBoyChat_WSBoyChatUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -79,9 +79,9 @@
 		E8C3266824DAEE2B008CA24D /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		E8C3336E24DBE7AB008CA24D /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		E8C3337024DBF86A008CA24D /* WSBLoginInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSBLoginInputView.swift; sourceTree = "<group>"; };
-		E8C3337224DBFC52008CA24D /* WSBLoginViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSBLoginViewCell.swift; sourceTree = "<group>"; };
 		E8C3783E24DC2E93008CA24D /* WSBLoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSBLoginService.swift; sourceTree = "<group>"; };
 		E8C392D624DC3466008CA24D /* WSBUserRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSBUserRegisterViewController.swift; sourceTree = "<group>"; };
+		E8C3982924E06B48008CA24D /* FSToaster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FSToaster.swift; path = WSBoyChat/FSToaster.swift; sourceTree = SOURCE_ROOT; };
 		E8C39FDE24DC373B008CA24D /* UIViewController+Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Router.swift"; sourceTree = "<group>"; };
 		E8C3ACD024DC3D83008CA24D /* WSBUserRegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSBUserRegisterViewModel.swift; sourceTree = "<group>"; };
 		E8C3B9C224DC43A8008CA24D /* WSBURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSBURL.swift; sourceTree = "<group>"; };
@@ -154,6 +154,7 @@
 		BA55BBB024D1D3BB00FF3ADD /* WSBoyChat */ = {
 			isa = PBXGroup;
 			children = (
+				E8C3982924E06B48008CA24D /* FSToaster.swift */,
 				BA55BBB124D1D3BB00FF3ADD /* AppDelegate.swift */,
 				BA55BBB324D1D3BB00FF3ADD /* ViewController.swift */,
 				E8C39FDD24DC3719008CA24D /* Utility */,
@@ -228,7 +229,6 @@
 				E8C3FD3624D9AD2E008CA24D /* WSBLoginViewController.swift */,
 				E8C3FD3824D9AD44008CA24D /* WSBLoginViewModel.swift */,
 				E8C3337024DBF86A008CA24D /* WSBLoginInputView.swift */,
-				E8C3337224DBFC52008CA24D /* WSBLoginViewCell.swift */,
 				E8C3783E24DC2E93008CA24D /* WSBLoginService.swift */,
 			);
 			path = Login;
@@ -483,13 +483,13 @@
 				E8C3FD3724D9AD2E008CA24D /* WSBLoginViewController.swift in Sources */,
 				E8C3FD3C24DA732C008CA24D /* WSBNavigationViewController.swift in Sources */,
 				E8C3266524DAE33E008CA24D /* WSBNavigationBar.swift in Sources */,
-				E8C3337324DBFC52008CA24D /* WSBLoginViewCell.swift in Sources */,
 				E8C3FD3924D9AD44008CA24D /* WSBLoginViewModel.swift in Sources */,
 				E8C3783F24DC2E93008CA24D /* WSBLoginService.swift in Sources */,
 				E8C3336F24DBE7AB008CA24D /* UIColor+Extension.swift in Sources */,
 				E8C3B9C324DC43A8008CA24D /* WSBURL.swift in Sources */,
 				E8C39FDF24DC373B008CA24D /* UIViewController+Router.swift in Sources */,
 				E8C392D724DC3466008CA24D /* WSBUserRegisterViewController.swift in Sources */,
+				E8E5503224E1A9CD001C6509 /* FSToaster.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

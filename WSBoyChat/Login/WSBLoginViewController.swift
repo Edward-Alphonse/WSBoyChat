@@ -11,17 +11,17 @@ import RxSwift
 import RxCocoa
 
 class WSBLoginViewController: WSBBaseViewController {
-    
-    var titleLabel = UILabel(frame: .zero)
     var accountInputView = WSBLoginInputView(frame: .zero)
     var passwordInputView = WSBLoginInputView(frame: .zero)
+    var registerButton = UIButton(type: .custom)
     var loginButton = UIButton(type: .custom)
+    var viewModel = WSBLoginViewModel()
     let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupSubviews()
-        // Do any additional setup after loading the view.
+        setupBindings()
     }
     
     func setupSubviews() {
@@ -30,6 +30,7 @@ class WSBLoginViewController: WSBBaseViewController {
         setupAccountInputView()
         setupPasswordInputView()
         setupLoginButton()
+        setupRegisterButton()
     }
     
     func configNavigationBar() {
@@ -37,7 +38,7 @@ class WSBLoginViewController: WSBBaseViewController {
         navigationBar.title = "登录"
         navigationBar.backgroundColor = .white
     }
-    
+
     func setupAccountInputView() {
         accountInputView.backgroundColor = .white
         accountInputView.titleLabel.text = "账号"
@@ -52,7 +53,7 @@ class WSBLoginViewController: WSBBaseViewController {
             maker.height.equalTo(48)
         }
     }
-    
+
     func setupPasswordInputView() {
         passwordInputView.backgroundColor = .white
         passwordInputView.titleLabel.text = "密码"
@@ -74,56 +75,51 @@ class WSBLoginViewController: WSBBaseViewController {
         self.view.addSubview(loginButton)
         loginButton.snp.makeConstraints { (maker) in
             maker.top.equalTo(passwordInputView.snp.bottom).offset(24)
-            maker.leftMargin.equalToSuperview().offset(16)
-            maker.rightMargin.equalToSuperview().offset(-16)
+            maker.left.equalToSuperview().offset(16)
+            maker.right.equalToSuperview().offset(-16)
             maker.height.equalTo(48)
+        }
+    }
+    
+    func setupRegisterButton() {
+        registerButton.setTitle("新用户注册", for: .normal)
+        registerButton.setTitle("新用户注册", for: .highlighted)
+        registerButton.setTitleColor(.blue, for: .normal)
+        registerButton.titleLabel?.font = UIFont.systemFont(ofSize: 12)
+        registerButton.sizeToFit()
+        self.view.addSubview(registerButton)
+        registerButton.snp.makeConstraints { (maker) in
+            maker.right.equalToSuperview().offset(-16)
+            maker.top.equalTo(loginButton.snp.bottom).offset(10)
         }
     }
 }
 
-
-class WSBLoginInputView: UIView {
-    fileprivate(set) var titleLabel = UILabel(frame: .zero)
-    fileprivate(set) var textField = UITextField(frame: .zero)
-    fileprivate var bottomLineView = UIView(frame: .zero)
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        loadSubviews()
+extension WSBLoginViewController {
+    func setupBindings() {
+        accountInputView.textField.rx.text.orEmpty.changed.bind(to: viewModel.accountInputted).disposed(by: disposeBag)
+        passwordInputView.textField.rx.text.orEmpty.changed.bind(to: viewModel.passwordInputted).disposed(by: disposeBag)
+        loginButton.rx.tap.bind(to: viewModel.loginButtonTapped).disposed(by: disposeBag)
+        registerButton.rx.tap.subscribe(onNext: {[weak self] () in
+            self?.gotoRegister()
+        }).disposed(by: disposeBag)
+        viewModel.passwordInputEnableSignal.emit(to: passwordInputView.textField.rx.isEnabled).disposed(by: disposeBag)
+        viewModel.loginButtonEnableSignal.emit(to: loginButton.rx.isEnabled).disposed(by: disposeBag)
+        viewModel.toastSignal.emit(onNext: {[weak self] (text) in
+            guard let text = text, !text.isEmpty else { return }
+            self?.view.makeToast(text, duration: 0.5, position: ToastPosition.center, title: nil, image: nil, style: ToastStyle(), completion: nil)
+        }).disposed(by: disposeBag)
+        viewModel.loadingSignal.emit(onNext: { [weak self] (type) in
+            if type == WSBLoadingType.loading {
+                self?.view.makeToastActivity(ToastPosition.center)
+                return
+            }
+            self?.view.hideToastActivity()
+        }).disposed(by: disposeBag)
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func loadSubviews() {
-        setupTitleLabel()
-        setupTextInputView()
-        setupBottomLineView()
-    }
-    
-    func setupTitleLabel() {
-        titleLabel.font = UIFont.systemFont(ofSize: 16)
-        titleLabel.textColor = .black
-        titleLabel.textAlignment = .center
-        addSubview(titleLabel)
-    }
-    
-    func setupTextInputView() {
-        textField.textColor = .black
-        textField.font = UIFont.systemFont(ofSize: 16)
-        addSubview(textField)
-    }
-    
-    func setupBottomLineView() {
-        bottomLineView.backgroundColor = UIColor.black.withAlphaComponent(0.3)
-        addSubview(bottomLineView)
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        bottomLineView.frame = CGRect(x: 0, y: self.height - 0.5, width: self.width, height: 0.5)
-        titleLabel.frame = CGRect(x: 0, y: 0, width: 80, height: self.height)
-        textField.frame = CGRect(x: titleLabel.right, y: 0, width: self.width - titleLabel.right - 8, height: self.height)
+    func gotoRegister() {
+        let viewControlelr = WSBUserRegisterViewController()
+        self.push(viewController: viewControlelr)
     }
 }

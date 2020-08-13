@@ -13,7 +13,6 @@ import RxSwift
 
 class ViewController: UIViewController {
     
-//    var button = UIButton(frame: )
     var button = UIButton(type: .custom)
     var disposeBag = DisposeBag()
     
@@ -33,11 +32,12 @@ class ViewController: UIViewController {
             maker.center.equalToSuperview()
         }
         button.rx.tap.bind {[weak self] () in
+            guard let `self` = self else { return }
             let loginViewController = WSBLoginViewController()
-//            self?.present(loginViewController, animated: true, completion: nil)
             let viewController = WSBNavigationViewController(rootViewController: loginViewController)
+
             viewController.modalPresentationStyle = .fullScreen
-            self?.present(viewController, animated: true, completion: nil)
+            self.present(viewController, animated: true, completion: nil)
             
         }.disposed(by: disposeBag)
     }
