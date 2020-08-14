@@ -16,6 +16,7 @@ class WSBBaseViewController: UIViewController, WSBNavigationBarDelegate {
     }
     
     fileprivate func loadSubviews() {
+        self.view.backgroundColor = .white
         setupNavigationBar()
     }
     

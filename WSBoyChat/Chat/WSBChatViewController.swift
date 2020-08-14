@@ -7,36 +7,34 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 class WSBChatViewController: WSBBaseViewController ,UITextViewDelegate ,UITableViewDelegate,UITableViewDataSource, UIGestureRecognizerDelegate, LiuqsToolBarDelegate, LiuqsEmotionKeyBoardDelegate {
     
+    var viewModel = WSBChatViewModel()
     var toolBarView:LiuqsToolBarView = LiuqsToolBarView.init(frame: CGRect())
-    
     var keyBoardH:CGFloat = CGFloat()
-    
-    var dataSource:NSMutableArray = NSMutableArray()
-    
     var tableView:UITableView = UITableView()
+    fileprivate var disposeBag = DisposeBag()
+    
     
     lazy private var emotionview: LiuqsEmotionKeyBoard = {
-        
         let emotionview = LiuqsEmotionKeyBoard.init(frame: CGRect.init(x: 0, y: screenH, width: screenW, height: EMOJI_KEYBOARD_HEIGHT))
-        
         emotionview.delegate = self
-        
         return emotionview
     }()
     
     
-    override func viewWillAppear(_ animated: Bool) {
-        
-        super.viewWillAppear(true)
-        
-//        self.navigationController?.delegate = self
-        
-        ScrollTableViewToBottom()
-        
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//
+//        super.viewWillAppear(true)
+//
+////        self.navigationController?.delegate = self
+//
+//        ScrollTableViewToBottom()
+//
+//    }
     
     override func viewDidAppear(_ animated: Bool) {
         
@@ -48,101 +46,44 @@ class WSBChatViewController: WSBBaseViewController ,UITextViewDelegate ,UITableV
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        createExampleData()
-        
-        initSomething()
-        
+        setupSubviews()
         addObsevers()
         
         creatToolBarView()
-        
-        initChatTableView()
     }
     
-    func createExampleData() {
-        
-        for i: Int in 0...3 {
-        
-            let chatCellFrame: LiuqsChatCellFrame = LiuqsChatCellFrame()
-            
-            let message: LiuqsChatMessage = LiuqsChatMessage()
-            
-            var messageText = String()
-            
-            if i == 0 {
-                
-                message.currentUserType = userType.other
-                message.userName = "鸣人"
-                message.messageType = 0
-                messageText = "在村里，Lz辈分比较大，在我还是小屁孩的时候就有大人喊我叔了，这不算糗[委屈]。 成年之后，鼓起勇气向村花二丫深情表白了(当然是没有血缘关系的)[害羞]，结果她一脸淡定的回绝了:“二叔！别闹……”[尴尬]"
-            }else if i == 2 {
-                
-                message.currentUserType = userType.me
-                message.userName = "路飞"
-                message.messageType = 0;
-                messageText = "小学六年级书法课后不知是哪个用红纸写了张六畜兴旺贴教室门上，上课语文老师看看门走了，过了一会才来，过了几天去办公室交作业听见语文老师说：看见那几个字我本来是不想进去的，但是后来一想养猪的也得进去喂猪"
-            }else if i == 1 {
-            
-                message.currentUserType = userType.other
-                message.userName = "鸣人"
-                message.messageType = 1
-                message.gifName = "2_4"
-            }else if i == 3 {
-            
-                message.currentUserType = userType.me
-                message.userName = "路飞"
-                message.messageType = 1
-                message.gifName = "2_8"
-            }
-            
-            message.message = messageText
-            
-            chatCellFrame.message = message
-            
-            dataSource.add(chatCellFrame)
-        }
-    }
-
-    // 初始化一些数据
-    func initSomething() {
-        
-//        self.view.backgroundColor = BACKGROUND_Color
-        
+    func setupSubviews() {
         self.automaticallyAdjustsScrollViewInsets = false
-        
-        self.title = "路飞"
+        self.navigationBar.title = "路飞"
+        setupTableView()
     }
+    
+    
     
     //创建tabbleView
-    func initChatTableView() {
+    func setupTableView() {
+        let offsetY = Utility.navigationBarHeight()
+        tableView = UITableView.init(frame: CGRect.init(x: 0, y: offsetY, width: self.view.width, height: self.view.height - offsetY - 48))
         
-        tableView = UITableView.init(frame: CGRect.init(x: 0, y: 64, width: screenW, height: screenH - toobarH - 64))
-        
-//        tableView.backgroundColor = BACKGROUND_Color
+        tableView.backgroundColor = BACKGROUND_Color
         
         tableView.showsVerticalScrollIndicator = false
-        
-        tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
-        
+        tableView.separatorStyle = .none
         tableView.dataSource = self
-        
         tableView.delegate = self
-        
         tableView.register(LiuqsChatMessageCell.self, forCellReuseIdentifier: "LiuqsChatMessageCell")
-        
         self.view.addSubview(tableView)
         
         //单击手势,用于退出键盘
-        let tap:UITapGestureRecognizer = UITapGestureRecognizer.init(target: self, action: #selector(tapTable))
-        
-        tap.delegate = self
-        
+        let tap = UITapGestureRecognizer()
+        tap.rx.event.bind {[weak self] (recognizer) in
+            self?.tapTable()
+        }.disposed(by: disposeBag)
         tableView.addGestureRecognizer(tap)
     }
     
     //手势事件
-    @objc func tapTable() {
+    func tapTable() {
     
         if toolBarView.textView.isFirstResponder {
             
@@ -175,41 +116,6 @@ class WSBChatViewController: WSBBaseViewController ,UITextViewDelegate ,UITableV
         }
     }
 
-    //注册监听
-    func addObsevers() {
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(noti:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(noti:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-    }
-    
-    //键盘出现
-    @objc func keyboardWillShow(noti:NSNotification) {
-        
-        let userInfo:NSDictionary = noti.userInfo! as NSDictionary
-        
-        let begin:CGRect = (((userInfo.object(forKey: UIResponder.keyboardFrameBeginUserInfoKey)) as? NSValue)?.cgRectValue)!
-        
-        let keyBoardFrame:CGRect = (((userInfo.object(forKey: UIResponder.keyboardFrameEndUserInfoKey)) as? NSValue)?.cgRectValue)!
-        
-        //处理三方键盘走多次
-        if begin.size.height > 0 && begin.origin.y - keyBoardFrame.origin.y > 0 {
-    
-            HandleKeyBoardShow(keyBoardFrame: keyBoardFrame)
-            
-            self.keyBoardH = keyBoardFrame.size.height;
-        }
-    }
-    
-    //键盘隐藏的通知事件
-    @objc func keyboardWillHide(noti:NSNotification) {
-        
-        self.keyBoardH = 0;
-        
-        HandleKeyBoardHide()
-    }
-
-    
     //处理键盘弹出
     func HandleKeyBoardShow(keyBoardFrame:CGRect) {
      
@@ -255,7 +161,7 @@ class WSBChatViewController: WSBBaseViewController ,UITextViewDelegate ,UITableV
     //tableview
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return dataSource.count
+        return viewModel.dataSource.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -264,7 +170,7 @@ class WSBChatViewController: WSBBaseViewController ,UITextViewDelegate ,UITableV
         
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
         
-        let chatCellFrame:LiuqsChatCellFrame = dataSource.object(at: indexPath.row) as! LiuqsChatCellFrame
+        let chatCellFrame:LiuqsChatCellFrame = viewModel.dataSource.object(at: indexPath.row) as! LiuqsChatCellFrame
         
         cell.chatCellFrame = chatCellFrame
         
@@ -280,7 +186,7 @@ class WSBChatViewController: WSBBaseViewController ,UITextViewDelegate ,UITableV
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
-        let chatCellFrame:LiuqsChatCellFrame = dataSource.object(at: indexPath.row) as! LiuqsChatCellFrame
+        let chatCellFrame:LiuqsChatCellFrame = viewModel.dataSource.object(at: indexPath.row) as! LiuqsChatCellFrame
         
         return chatCellFrame.cellHeight;
     }
@@ -335,9 +241,9 @@ class WSBChatViewController: WSBBaseViewController ,UITextViewDelegate ,UITableV
     
     //滚动到底部
     func ScrollTableViewToBottom() {
-        if self.dataSource.count > 0 {
+        if viewModel.dataSource.count > 0 {
             
-        let indexPath:NSIndexPath = NSIndexPath.init(row: self.dataSource.count - 1, section: 0)
+        let indexPath:NSIndexPath = NSIndexPath.init(row: viewModel.dataSource.count - 1, section: 0)
         
             self.tableView.scrollToRow(at: indexPath as IndexPath, at: UITableView.ScrollPosition.bottom, animated: false)
         }
@@ -431,7 +337,7 @@ class WSBChatViewController: WSBBaseViewController ,UITextViewDelegate ,UITableV
         
         cellFrame.message = message
         
-        dataSource.add(cellFrame)
+        viewModel.dataSource.add(cellFrame)
         
         refreshChatList()
     }
@@ -472,7 +378,7 @@ class WSBChatViewController: WSBBaseViewController ,UITextViewDelegate ,UITableV
         
         cellFrame.message = message
 
-        dataSource.add(cellFrame)
+        viewModel.dataSource.add(cellFrame)
         
     }
     
@@ -483,7 +389,7 @@ class WSBChatViewController: WSBBaseViewController ,UITextViewDelegate ,UITableV
         
         textViewDidChange(toolBarView.textView)
         
-        let indexPath:NSIndexPath = NSIndexPath.init(row: dataSource.count - 1, section: 0)
+        let indexPath:NSIndexPath = NSIndexPath.init(row: viewModel.dataSource.count - 1, section: 0)
         
         tableView.insertRows(at: [indexPath as IndexPath], with: UITableView.RowAnimation.none)
 
