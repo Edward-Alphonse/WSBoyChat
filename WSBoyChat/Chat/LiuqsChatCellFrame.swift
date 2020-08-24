@@ -26,7 +26,7 @@ class LiuqsChatCellFrame: NSObject {
     
     private let iconH:CGFloat    = 50.0
     
-    var message:LiuqsChatMessage? {
+    var message: WSBChatMessage? {
     
         didSet {computeFrames()}
     }
@@ -34,7 +34,7 @@ class LiuqsChatCellFrame: NSObject {
     //计算frame
     func computeFrames() {
         
-        let type:Bool = message?.currentUserType == userType.me
+        let type:Bool = message?.user?.type == .me
         //头像
         let iconFrameX:CGFloat = type ? padding : screenW - padding - iconW
         let iconFrameY:CGFloat = padding

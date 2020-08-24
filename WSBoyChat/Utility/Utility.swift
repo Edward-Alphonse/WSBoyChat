@@ -83,3 +83,14 @@ struct Utility {
        return margin
     }
 }
+
+
+extension Utility {
+    static func stringSize(text: String, font: UIFont, constrained width: CGFloat) -> (NSAttributedString, CGSize) {
+        var attributes = [NSAttributedString.Key: Any]()
+        attributes[NSAttributedString.Key.font] = font
+        let attributeString = NSAttributedString(string: text, attributes: attributes)
+        let size = attributeString.boundingRect(with: CGSize(width: width, height: 999), options: NSStringDrawingOptions.usesFontLeading, context: nil).size
+        return (attributeString, size)
+    }
+}

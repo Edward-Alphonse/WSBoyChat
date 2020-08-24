@@ -8,7 +8,7 @@
 
 import UIKit
 
-public protocol LiuqsEmotionKeyBoardDelegate {
+public protocol LiuqsEmotionKeyBoardDelegate: class {
     
     func emotionView_sBtnDidClick(btn:UIButton)
     
@@ -19,114 +19,71 @@ class LiuqsEmotionKeyBoard: UIImageView ,UIScrollViewDelegate {
     
     //公有属性
     var sendBtn:UIButton       = UIButton()
-    
     var emojiBtn:UIButton      = UIButton()
-
-    var delegate:LiuqsEmotionKeyBoardDelegate?
+    weak var delegate:LiuqsEmotionKeyBoardDelegate?
     
     //私有固定常量
     private let rows:Int = 3
-    
     private let pages:Int = 7
-    
     private let rowCount:Int = 7
-    
     private let gifCount:Int = 18
-    
     private let emojicount:Int = 21
-    
     private let gifRowCount:Int = 4
-    
     private let emotionBtnsCount:Int = 2
-    
     private let gifW:CGFloat = screenW * 0.15625
-    
     private let gifH:CGFloat = screenW * 0.22
-    
     private let emotionW:CGFloat = screenW * 0.0875
     
     //对照表
     private var _emotionGifTitle:NSDictionary   = NSDictionary()
-    
     private var _emojiStaticImages:NSDictionary = NSDictionary()
-    
     private var _emojiTags:NSArray = NSArray()
-    
     
     //私有属性和控件
     private var font:UIFont  = UIFont()
-    
     private var gap: CGFloat = 0.0
-    
     private var EMOJI_MAX_SIZE:CGFloat = 0.0
-    
     private var btnsBar:UIButton      = UIButton()
-    
     private var springBtn:UIButton    = UIButton()
-    
     private var emotionBtn:UIButton   = UIButton()
-    
     private var pageView:UIScrollView = UIScrollView()
-    
     private var scrollBtnsView:UIScrollView      = UIScrollView()
-    
     private var pageControl:       UIPageControl = UIPageControl()
-    
     private var emotonViewPageOne:   UIImageView = UIImageView()
-    
     private var emotonViewPageTwo:   UIImageView = UIImageView()
-    
     private var emotonViewPageThree: UIImageView = UIImageView()
-    
     private var emotonViewPageFour:  UIImageView = UIImageView()
-    
     private var emotonViewPageFive:  UIImageView = UIImageView()
-    
     private var emotonViewPageSix:   UIImageView = UIImageView()
-    
     private var emotonViewPageSeven: UIImageView = UIImageView()
-    
     private var emotonViewPageEight: UIImageView = UIImageView()
     
     var KeyTextView:UITextView? {
-    
-        didSet {setSomeProperty()}
+        didSet {
+            setSomeProperty()
+        }
     }
     
     func setSomeProperty() {
-    
         if (KeyTextView!.font == nil) {
-            
             KeyTextView?.font = UIFont.systemFont(ofSize: 17)
         }
         font = (KeyTextView?.font!)!
-        
         EMOJI_MAX_SIZE = heightWithFont(font: font)
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-    
         self.backgroundColor = UIColor.white
-        
         initEmojiDatas()
-        
         createScorllView()
-        
         createEmotionViews()
-        
         createPageControl()
-        
         creatPageViewOneBtns()
-        
         ceartPageViewTwoBtns()
-        
         ceartPageViewFourBtns()
-        
         ceartPageViewThreeBtns()
-        
         creatGifBtns()
-        
         creatBottomBar()
     }
     

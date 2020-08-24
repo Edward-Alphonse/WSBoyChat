@@ -57,7 +57,12 @@ extension UIView {
     }
     
     var bottom: CGFloat {
-        return self.frame.maxY
+        set {
+            self.frame = CGRect(x: x, y: newValue - self.height, width: self.width, height: self.height)
+        }
+        get {
+            return self.frame.maxY
+        }
     }
     
     var origin: CGPoint {
