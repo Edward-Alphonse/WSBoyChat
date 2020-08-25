@@ -30,4 +30,8 @@ class WSBChatMessage: NSObject {
     var gifName: String?
     var attMessage: NSMutableAttributedString?
     var type: WSBChatMessageType = .text
+    
+    override init() {
+        user = WSBChatUser()
+    }
 }

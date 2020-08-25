@@ -8,29 +8,6 @@
 
 import UIKit
 
-//public enum WSBChatMessageCellSubviewKey: String {
-//    case
-//}
-
-//public struct WSBChatMessageCellSubviewKey: RawRepresentable {
-//    public typealias RawValue = String
-//    public typealias SubviewKey = WSBChatMessageCellSubviewKey
-//
-//    public static var avatarView = SubviewKey(rawValue: "avatar_view")
-//    public static var nameLabel = SubviewKey(rawValue: "name_label")
-//    public static var messageLabel = SubviewKey(rawValue: "message_label")
-//    public static var gifimageView = SubviewKey(rawValue: "gif_image_view")
-//
-//    public var rawValue: String
-//    public init?(rawValue: String) {
-//        self.rawValue = rawValue
-//    }
-//}
-
-enum SubviewKey: Int {
-    case a = 0
-}
-
 class WSBChatMessageCell: UITableViewCell {
     static let identifier = "WSBChatMessageCell"
     
@@ -41,7 +18,11 @@ class WSBChatMessageCell: UITableViewCell {
         case gifImageView = "gif_image_view"
     }
 
-    var viewModel: WSBChatMessageCellModel?
+    var viewModel: WSBChatMessageCellModel? {
+        didSet {
+            setCellModel()
+        }
+    }
     private var avatarView = WSBWebImageView(frame: .zero)
     private var nameLabel = UILabel(frame: .zero)
     private var messageLabel = UILabel(frame: .zero)
@@ -96,48 +77,16 @@ class WSBChatMessageCell: UITableViewCell {
         contentView.addSubview(gifimageView)
     }
     
-    var chatCellFrame:LiuqsChatCellFrame? {
-        
-        didSet {
-            
-            let type: Bool = chatCellFrame?.message?.user?.type == .me
-            
-            //头像
-            avatarView.imageName = type ? "1" : "2"
-            avatarView.frame = (chatCellFrame?.iconFrame)!
-            //名字
-            nameLabel.text = chatCellFrame?.message?.user?.name
-            nameLabel.frame = (chatCellFrame?.nameFrame)!
-            nameLabel.textAlignment = type ? NSTextAlignment.left : NSTextAlignment.right
-            
-            if chatCellFrame?.message?.messageType == 0 {
-                
-                //消息内容
-//                messageLabel.setAttributedTitle(chatCellFrame?.message?.attMessage, for: UIControl.State.normal)
-                messageLabel.attributedText = chatCellFrame?.message?.attMessage
-                messageLabel.frame = (chatCellFrame?.textFrame)!
-                let messageImageName: String = type ? "chat_receive_nor" : "chat_send_nor"
-                let messageImageNameP: String = type ? "chat_receive_p" : "chat_send_p"
-//                messageLabel.setBackgroundImage(UIImage.resizebleImage(imageName: messageImageName), for: UIControl.State.normal)
-//                messageLabel.setBackgroundImage(UIImage.resizebleImage(imageName: messageImageNameP), for: UIControl.State.highlighted)
-//                messageLabel.titleEdgeInsets = type ? UIEdgeInsets(top: 7, left: 13, bottom: 5, right: 5) : UIEdgeInsets(top: 5, left: 7, bottom: 5, right: 13)
-                gifimageView.frame = CGRect()
-                
-            }   else if chatCellFrame?.message?.messageType == 1 {
-                
-                let path:String = Bundle.main.path(forResource: chatCellFrame?.message?.gifName, ofType: "gif")!
-                
-                let data = NSData.init(contentsOf: NSURL.init(fileURLWithPath: path) as URL)
-                
-                let animationImage = UIImage.animationImageWithData(data: data);
-             
-                gifimageView.image =  animationImage;
-                
-                gifimageView.frame = (chatCellFrame?.imageViewFrame)!
-                
-                messageLabel.frame = CGRect()
-            }
-            
+    func setCellModel() {
+        guard let viewModel = viewModel else {
+            return
+        }
+        avatarView.imageName = viewModel.isMe ? "1" : "2"
+        avatarView.frame = viewModel[SubviewKey.avatarView]
+
+        if viewModel.messageType == .text {
+            messageLabel.attributedText = viewModel.message
+            messageLabel.frame = viewModel[SubviewKey.messageLabel]
         }
     }
     

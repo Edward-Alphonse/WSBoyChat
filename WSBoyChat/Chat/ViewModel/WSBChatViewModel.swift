@@ -18,9 +18,14 @@ class WSBChatViewModel {
     var insertMessage: Signal<IndexPath?> {
         return insertMessageRelay.asSignal(onErrorJustReturn: nil)
     }
-    fileprivate(set) var dataSource:NSMutableArray = NSMutableArray()
+    var refreshSignal: Signal<Void> {
+        return refreshRelay.asSignal(onErrorJustReturn: ())
+    }
+
+    fileprivate(set) var cellModels = [WSBChatMessageCellModel]()
     fileprivate var toolBarBottomRelay = BehaviorRelay<CGFloat>(value: 0)
     fileprivate var insertMessageRelay = BehaviorRelay<IndexPath?>(value: nil)
+    fileprivate var refreshRelay = BehaviorRelay<Void>(value: ())
     fileprivate var disposeBag = DisposeBag()
     init() {
         createExampleData()
@@ -29,47 +34,38 @@ class WSBChatViewModel {
     }
     
     func createExampleData() {
-        
-        for i: Int in 0...3 {
-        
-            let chatCellFrame: LiuqsChatCellFrame = LiuqsChatCellFrame()
-            
-            let message = WSBChatMessage()
-            
-            var messageText = String()
-            
-            if i == 0 {
-                
-                message.user?.type = .other
-                message.user?.name = "鸣人"
-                message.messageType = 0
-                messageText = "在村里，Lz辈分比较大，在我还是小屁孩的时候就有大人喊我叔了，这不算糗[委屈]。 成年之后，鼓起勇气向村花二丫深情表白了(当然是没有血缘关系的)[害羞]，结果她一脸淡定的回绝了:“二叔！别闹……”[尴尬]"
-            }else if i == 2 {
-                
-                message.user?.type = .me
-                message.user?.name = "路飞"
-                message.messageType = 0;
-                messageText = "小学六年级书法课后不知是哪个用红纸写了张六畜兴旺贴教室门上，上课语文老师看看门走了，过了一会才来，过了几天去办公室交作业听见语文老师说：看见那几个字我本来是不想进去的，但是后来一想养猪的也得进去喂猪"
-            }else if i == 1 {
-            
-                message.user?.type = .other
-                message.user?.name = "鸣人"
-                message.messageType = 1
-                message.gifName = "2_4"
-            }else if i == 3 {
-            
-                message.user?.type = .me
-                message.user?.name = "路飞"
-                message.messageType = 1
-                message.gifName = "2_8"
+        DispatchQueue.global().async { [weak self] in
+            for i: Int in 0...3 {
+                let message = WSBChatMessage()
+                if i == 0 {
+                    message.user?.type = .other
+                    message.user?.name = "鸣人"
+                    message.type = .text
+                    message.message = "在村里，Lz辈分比较大，在我还是小屁孩的时候就有大人喊我叔了，这不算糗[委屈]。 成年之后，鼓起勇气向村花二丫深情表白了(当然是没有血缘关系的)[害羞]，结果她一脸淡定的回绝了:“二叔！别闹……”[尴尬]"
+                }else if i == 2 {
+                    message.user?.type = .me
+                    message.user?.name = "路飞"
+                    message.type = .text
+                    message.message = "小学六年级书法课后不知是哪个用红纸写了张六畜兴旺贴教室门上，上课语文老师看看门走了，过了一会才来，过了几天去办公室交作业听见语文老师说：看见那几个字我本来是不想进去的，但是后来一想养猪的也得进去喂猪"
+                }else if i == 1 {
+                    message.user?.type = .other
+                    message.user?.name = "鸣人"
+                    message.type = .gif
+                    message.gifName = "2_4"
+                }else if i == 3 {
+                    message.user?.type = .me
+                    message.user?.name = "路飞"
+                    message.type = .gif
+                    message.gifName = "2_8"
+                }
+                let cellModel = WSBChatMessageCellModel(model: message)
+                self?.cellModels.append(cellModel)
             }
-            
-            message.message = messageText
-            
-            chatCellFrame.message = message
-            
-            dataSource.add(chatCellFrame)
+            DispatchQueue.main.async {
+                self?.refreshRelay.accept(())
+            }
         }
+        
     }
 
     func addObsevers() {
@@ -87,13 +83,11 @@ class WSBChatViewModel {
     }
     
     func setupBindings() {
-        sendMessage.subscribe(onNext: {[weak self] (message) in
-            var messageText = "[憨笑]彩笔，怎么可以输入空格呢?[得意]"
+        sendMessage.skip(1).subscribe(onNext: {[weak self] (message) in
             guard let message = message, !message.isEmpty else {
                 return
             }
-            messageText = message
-            self?.createDataSource(text: messageText)
+            self?.createDataSource(text: message)
         }, onCompleted: {
             print("ok")
         }).disposed(by: disposeBag)
@@ -108,13 +102,19 @@ class WSBChatViewModel {
     }
     
     func createDataSource(text: String) {
-        let cellFrame = LiuqsChatCellFrame()
         let message = WSBChatMessage()
         message.message = text
-        message.messageType = 0
+        message.type = .text
         message.user?.name = "鸣人"
-        cellFrame.message = message
-        dataSource.add(cellFrame)
-        insertMessageRelay.accept(IndexPath(row: dataSource.count - 1, section: 0))
+        let cellModel = WSBChatMessageCellModel(model: message)
+        cellModels.append(cellModel)
+        insertMessageRelay.accept(IndexPath(row: cellModels.count - 1, section: 0))
+    }
+    
+    subscript(index: Int) -> WSBChatMessageCellModel? {
+        guard index < cellModels.count else {
+            return nil
+        }
+        return cellModels[index]
     }
 }

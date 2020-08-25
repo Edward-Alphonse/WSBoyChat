@@ -127,7 +127,6 @@
 		BA31162D24E5B8730012C6A2 /* LiuqsTextAttachment.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3115BA24E5B8730012C6A2 /* LiuqsTextAttachment.swift */; };
 		BA31162F24E5B8F70012C6A2 /* LiuqsDefines.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA31162E24E5B8F70012C6A2 /* LiuqsDefines.swift */; };
 		BA31163124E5BB2B0012C6A2 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA31163024E5BB2B0012C6A2 /* UIImage+Extension.swift */; };
-		BA31163624E5BE2E0012C6A2 /* LiuqsChatCellFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA31163424E5BE2D0012C6A2 /* LiuqsChatCellFrame.swift */; };
 		BA31163724E5BE2E0012C6A2 /* WSBChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA31163524E5BE2E0012C6A2 /* WSBChatMessage.swift */; };
 		BA31163924F184E70012C6A2 /* FSWebImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA31163824F184E70012C6A2 /* FSWebImageView.swift */; };
 		BA31163B24F185FB0012C6A2 /* WSBWebImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA31163A24F185FB0012C6A2 /* WSBWebImageView.swift */; };
@@ -303,7 +302,6 @@
 		BA3115BA24E5B8730012C6A2 /* LiuqsTextAttachment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiuqsTextAttachment.swift; sourceTree = "<group>"; };
 		BA31162E24E5B8F70012C6A2 /* LiuqsDefines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiuqsDefines.swift; sourceTree = "<group>"; };
 		BA31163024E5BB2B0012C6A2 /* UIImage+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
-		BA31163424E5BE2D0012C6A2 /* LiuqsChatCellFrame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LiuqsChatCellFrame.swift; sourceTree = "<group>"; };
 		BA31163524E5BE2E0012C6A2 /* WSBChatMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WSBChatMessage.swift; sourceTree = "<group>"; };
 		BA31163824F184E70012C6A2 /* FSWebImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSWebImageView.swift; sourceTree = "<group>"; };
 		BA31163A24F185FB0012C6A2 /* WSBWebImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSBWebImageView.swift; sourceTree = "<group>"; };
@@ -385,7 +383,6 @@
 		BA31153724E5B8090012C6A2 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
-				BA31163424E5BE2D0012C6A2 /* LiuqsChatCellFrame.swift */,
 				BA31163F24F2D9500012C6A2 /* Model */,
 				BA31153824E5B8140012C6A2 /* View */,
 				BA31163E24F2D8CE0012C6A2 /* ViewModel */,
@@ -1066,7 +1063,6 @@
 				E8C3B9C324DC43A8008CA24D /* WSBURL.swift in Sources */,
 				E8C39FDF24DC373B008CA24D /* UIViewController+Router.swift in Sources */,
 				E8C392D724DC3466008CA24D /* WSBUserRegisterViewController.swift in Sources */,
-				BA31163624E5BE2E0012C6A2 /* LiuqsChatCellFrame.swift in Sources */,
 				BA31164124F2DB530012C6A2 /* UIView+Frame.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -65,6 +65,10 @@ class WSBChatViewController: WSBBaseViewController ,UITableViewDelegate,UITableV
         }, onCompleted: {
             print("---------aaaaa")
         }).disposed(by: disposeBag)
+        
+        viewModel.refreshSignal.skip(1).emit(onNext: { [weak self] () in
+            self?.tableView.reloadData()
+        }).disposed(by: disposeBag)
     }
     
     //创建tabbleView
@@ -143,7 +147,7 @@ class WSBChatViewController: WSBBaseViewController ,UITableViewDelegate,UITableV
     //tableview
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return viewModel.dataSource.count
+        return viewModel.cellModels.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -153,11 +157,7 @@ class WSBChatViewController: WSBBaseViewController ,UITableViewDelegate,UITableV
         }
         
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
-        
-        let chatCellFrame:LiuqsChatCellFrame = viewModel.dataSource.object(at: indexPath.row) as! LiuqsChatCellFrame
-        
-        cell.chatCellFrame = chatCellFrame
-        
+        cell.viewModel = viewModel[indexPath.row]
         return cell
     }
     
@@ -169,10 +169,10 @@ class WSBChatViewController: WSBBaseViewController ,UITableViewDelegate,UITableV
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        
-        let chatCellFrame:LiuqsChatCellFrame = viewModel.dataSource.object(at: indexPath.row) as! LiuqsChatCellFrame
-        
-        return chatCellFrame.cellHeight;
+        guard let cellModel = viewModel[indexPath.row] else {
+            return 0.0
+        }
+        return cellModel.height
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
@@ -202,9 +202,9 @@ class WSBChatViewController: WSBBaseViewController ,UITableViewDelegate,UITableV
     
     //滚动到底部
     func scrollTableViewToBottom() {
-        if viewModel.dataSource.count > 0 {
+        if viewModel.cellModels.count > 0 {
             
-        let indexPath:NSIndexPath = NSIndexPath.init(row: viewModel.dataSource.count - 1, section: 0)
+        let indexPath:NSIndexPath = NSIndexPath.init(row: viewModel.cellModels.count - 1, section: 0)
         
             self.tableView.scrollToRow(at: indexPath as IndexPath, at: UITableView.ScrollPosition.bottom, animated: false)
         }
@@ -215,13 +215,7 @@ class WSBChatViewController: WSBBaseViewController ,UITableViewDelegate,UITableV
     
     //keyBoard代理
     func emotionView_sBtnDidClick(btn:UIButton) {
-    
-//       textViewDidChange(toolBarView.textView)
-//
-//        if btn.tag == 44 {//发送按钮
-//
-//           sendMessage()
-//        }
+
     }
     
     func gifBtnClick(btn:UIButton) {
@@ -230,28 +224,28 @@ class WSBChatViewController: WSBBaseViewController ,UITableViewDelegate,UITableV
         
         let gifName = "2_\(btn.tag)"
         
-        sendGifmessage(gifname: gifName)
+//        sendGifmessage(gifname: gifName)
     }
     
     func sendGifmessage(gifname:String){
         
-        let cellFrame = LiuqsChatCellFrame()
-        
-        let message   = WSBChatMessage()
-        
-        message.messageType = 1
-        
-        message.message = ""
-        
-        message.user?.name = "鸣人"
-        
-        message.gifName = gifname
-        
-        message.user?.type = .other
-        
-        cellFrame.message = message
-        
-        viewModel.dataSource.add(cellFrame)
+//        let cellFrame = LiuqsChatCellFrame()
+//
+//        let message   = WSBChatMessage()
+//
+//        message.type = .gif
+//
+//        message.message = ""
+//
+//        message.user?.name = "鸣人"
+//
+//        message.gifName = gifname
+//
+//        message.user?.type = .other
+//
+//        cellFrame.message = message
+//
+//        viewModel.dataSource.add(cellFrame)
         
 //        refreshChatList()
     }
@@ -284,7 +278,7 @@ class WSBChatViewController: WSBBaseViewController ,UITableViewDelegate,UITableV
     
     //刷新UI
     func insertMessage(at indexPath: IndexPath) {
-        let indexPath:NSIndexPath = NSIndexPath.init(row: viewModel.dataSource.count - 1, section: 0)
+        let indexPath:NSIndexPath = NSIndexPath.init(row: viewModel.cellModels.count - 1, section: 0)
         
         tableView.insertRows(at: [indexPath as IndexPath], with: UITableView.RowAnimation.none)
 

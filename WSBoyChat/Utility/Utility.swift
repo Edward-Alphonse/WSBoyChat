@@ -94,3 +94,12 @@ extension Utility {
         return (attributeString, size)
     }
 }
+
+extension UIEdgeInsets {
+    var horizon: CGFloat {
+        return self.left + self.right
+    }
+    var vertical: CGFloat {
+        return self.top + self.bottom
+    }
+}

@@ -27,100 +27,74 @@ struct WSBChatSubviewFrame {
 class WSBChatMessageCellModel {
     var height: CGFloat = 0
     var avatarUrl: String? {
-        return model.user?.avatar
+        return model?.user?.avatar
     }
     var message: NSAttributedString?
-    fileprivate var frames = [WSBChatSubviewFrame]()
-    fileprivate var model: WSBChatMessage
     var isMe: Bool {
-        return  model.user?.type == .me
+        return  model?.user?.type == .me
+    }
+    var messageType: WSBChatMessageType {
+        return model?.type ?? .text
+    }
+    var model: WSBChatMessage? {
+        didSet {
+            layout()
+        }
     }
     
-    init(model: WSBChatMessage) {
+    fileprivate var frames = [WSBChatSubviewFrame]()
+    fileprivate var inset = UIEdgeInsets(top: 4, left: 8, bottom: 4, right: 8)
+    
+    convenience init(model: WSBChatMessage) {
+        self.init()
         self.model = model
         layout()
     }
     
+    init() {}
+    
     fileprivate func layoutAvatarView() {
-        let iconW: CGFloat    = 36.0
-        let padding: CGFloat  = 8.0
-        let iconH: CGFloat    = 36.0
-        
-        let iconFrameX: CGFloat = isMe ? padding : screenW - padding - iconW
-        let iconFrameY: CGFloat = padding
-        let iconFrameW: CGFloat = iconW
-        let iconFrameH: CGFloat = iconH
-        let iconFrame = CGRect(x: iconFrameX, y: iconFrameY, width: iconFrameW, height: iconFrameH)
+        let size: CGFloat    = 36.0
+        let xOffset: CGFloat = !isMe ? inset.left : screenW - inset.right - size
+        let yOffset: CGFloat = inset.top
+        let iconFrame = CGRect(x: xOffset, y: yOffset, width: size, height: size)
         frames.append(WSBChatSubviewFrame(key: .avatarView, frame: iconFrame))
     }
     
     fileprivate func layoutMessageLabel() {
-        let padding: CGFloat = 52
+        guard let model = model else {
+            return
+        }
+        let padding: CGFloat = 44
         var frame: CGRect = .zero
         self.message = nil
         if model.type == .text, let message = model.message {
-            var xOffset: CGFloat = padding
-            let result = Utility.stringSize(text: message, font: UIFont.systemFont(ofSize: 14), constrained: screenW - 2 * padding)
+            var xOffset: CGFloat = inset.left + padding
+            let result = Utility.stringSize(text: message, font: UIFont.systemFont(ofSize: 14), constrained: screenW - 2 * padding - inset.horizon)
             
             let size = result.1
             if isMe {
-                xOffset = screenW - padding - size.width
+                xOffset = screenW - inset.right - padding - size.width
             }
-            frame = CGRect(x: xOffset, y: 8.0, width: size.width, height: size.height)
+            let yOffset: CGFloat = inset.top
+            frame = CGRect(x: xOffset, y: yOffset, width: size.width, height: size.height)
             self.message = result.0
         }
         frames.append(WSBChatSubviewFrame(key: .messageLabel, frame: frame))
     }
     
-//    fileprivate func layoutGifImageView() {
-//        let padding: CGFloat = 52
-//        var frame: CGRect = .zero
-//        let height: CGFloat = 125
-//        if model.type == .gif {
-//             frame = CGRect(x: padding, y: 8.0, width: screenW - 2 * padding, height: 100)
-//        }
-//        frames.append(WSBChatSubviewFrame(key: .messageLabel, frame: frame))
-//    }
-    
     fileprivate func layout() {
         layoutAvatarView()
         layoutMessageLabel()
-//        let type:Bool = message?.user?.type == .me
-//            //头像
-//            let iconFrameX:CGFloat = type ? padding : screenW - padding - iconW
-//            let iconFrameY:CGFloat = padding
-//            let iconFrameW:CGFloat = iconW
-//            let iconFrameH:CGFloat = iconH
-//            iconFrame  = CGRect.init(x: iconFrameX, y: iconFrameY, width: iconFrameW, height: iconFrameH)
-//
-//            //名字
-//            nameFrame = type ? CGRect.init(x: iconFrame.maxX + padding, y: iconFrameY, width: 100, height: 25) : CGRect.init(x: screenW - padding * 2 - iconFrameW - 100, y: iconFrameY, width: 100, height: 25)
-//
-//            if message?.messageType == 0 {
-//
-//                //message
-//                let str:String = (message?.message)!
-//                let textAtt = LiuqsChageEmotionStrTool.changeStr(string: str, font: UIFont.systemFont(ofSize: 17.0), textColor: UIColor.black)
-//                message?.attMessage = textAtt
-//                let maxsize:CGSize = CGSize.init(width: Int(screenW - (iconFrameW + padding * 3) * 2), height: 1000)
-//                let textSize:CGSize = textAtt.boundingRect(with: maxsize, options: .usesLineFragmentOrigin, context: nil).size
-//                let emojiSize:CGSize = CGSize.init(width: textSize.width + padding * 2, height: textSize.height + padding * 2)
-//                textFrame = type ? CGRect.init(x: padding * 2 + iconFrameW, y: iconFrameY + iconFrameH * 0.5, width: emojiSize.width, height: emojiSize.height) : CGRect.init(x: screenW - padding * 2 - iconFrameW - emojiSize.width, y: iconFrameY + iconFrameH * 0.5, width: emojiSize.width, height: emojiSize.height)
-//                cellHeight = textFrame.maxY + padding;
-//            }else if message?.messageType == 1 {
-//
-//                imageViewFrame = type ? CGRect.init(x: padding * 2 + iconFrameW, y: iconFrameY + iconFrameH * 0.5, width: 100, height: 100) : CGRect.init(x: screenW - padding * 2 - iconFrameW - 100, y: iconFrameY + iconFrameH * 0.5, width: 100, height: 100);
-//
-//                cellHeight = imageViewFrame.maxY + padding;
-//
-//            }else {
-//
-//
-//            }
+        
+        let avatarHeight: CGFloat = self[WSBChatMessageCell.SubviewKey.avatarView].height
+        let messageHeight: CGFloat = self[WSBChatMessageCell.SubviewKey.messageLabel].height
+        height = max(avatarHeight, messageHeight)
+        height += inset.vertical
     }
     
-    subscript(key: WSBChatMessageCell.SubviewKey) -> CGRect? {
+    subscript(key: WSBChatMessageCell.SubviewKey) -> CGRect {
         let results = frames.filter { $0.key == key}
-        return results.first?.frame
+        return results.first?.frame ?? .zero
     }
 }
