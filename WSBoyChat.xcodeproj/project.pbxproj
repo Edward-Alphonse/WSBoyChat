@@ -141,6 +141,7 @@
 		BA55BBC724D1D3BC00FF3ADD /* WSBoyChatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA55BBC624D1D3BC00FF3ADD /* WSBoyChatTests.swift */; };
 		BA55BBD224D1D3BC00FF3ADD /* WSBoyChatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA55BBD124D1D3BC00FF3ADD /* WSBoyChatUITests.swift */; };
 		D010BC58B17CDE40419C2487 /* Pods_WSBoyChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE5D33637F439FF8A7932326 /* Pods_WSBoyChat.framework */; };
+		E884485124F664730070C963 /* FSArrowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E884485024F664730070C963 /* FSArrowView.swift */; };
 		E8C3266324DADDF3008CA24D /* WSBBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C3266224DADDF3008CA24D /* WSBBaseViewController.swift */; };
 		E8C3266524DAE33E008CA24D /* WSBNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C3266424DAE33E008CA24D /* WSBNavigationBar.swift */; };
 		E8C3266724DAE3A8008CA24D /* UIView+CGRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C3266624DAE3A8008CA24D /* UIView+CGRect.swift */; };
@@ -325,6 +326,7 @@
 		C1478BF06E7FA1B2AEEA41F8 /* Pods-WSBoyChat-WSBoyChatUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WSBoyChat-WSBoyChatUITests.debug.xcconfig"; path = "Target Support Files/Pods-WSBoyChat-WSBoyChatUITests/Pods-WSBoyChat-WSBoyChatUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		E742C5906E6A741CCEE7DAAF /* Pods_WSBoyChat_WSBoyChatUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WSBoyChat_WSBoyChatUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7A8E881C3B2829D689716B1 /* Pods_WSBoyChatTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WSBoyChatTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E884485024F664730070C963 /* FSArrowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSArrowView.swift; sourceTree = "<group>"; };
 		E8C3266224DADDF3008CA24D /* WSBBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSBBaseViewController.swift; sourceTree = "<group>"; };
 		E8C3266424DAE33E008CA24D /* WSBNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSBNavigationBar.swift; sourceTree = "<group>"; };
 		E8C3266624DAE3A8008CA24D /* UIView+CGRect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+CGRect.swift"; sourceTree = "<group>"; };
@@ -682,6 +684,7 @@
 				E8C3266224DADDF3008CA24D /* WSBBaseViewController.swift */,
 				E8C3266424DAE33E008CA24D /* WSBNavigationBar.swift */,
 				BA31163A24F185FB0012C6A2 /* WSBWebImageView.swift */,
+				E884485024F664730070C963 /* FSArrowView.swift */,
 			);
 			path = FSUIKit;
 			sourceTree = "<group>";
@@ -1056,6 +1059,7 @@
 				E8C3266524DAE33E008CA24D /* WSBNavigationBar.swift in Sources */,
 				E8C3FD3924D9AD44008CA24D /* WSBLoginViewModel.swift in Sources */,
 				BA31163724E5BE2E0012C6A2 /* WSBChatMessage.swift in Sources */,
+				E884485124F664730070C963 /* FSArrowView.swift in Sources */,
 				BA31153624E5B6710012C6A2 /* WSBChatViewController.swift in Sources */,
 				E8C3783F24DC2E93008CA24D /* WSBLoginService.swift in Sources */,
 				BA31163124E5BB2B0012C6A2 /* UIImage+Extension.swift in Sources */,
