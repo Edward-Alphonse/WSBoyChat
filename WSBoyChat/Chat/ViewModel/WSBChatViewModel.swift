@@ -30,7 +30,12 @@ class WSBChatViewModel {
     init() {
         createExampleData()
         addObsevers()
+        initNetwork()
         setupBindings()
+    }
+    
+    func initNetwork() {
+        WSBNetworkManager.shared.connect(host: "192.168.1.8", port: "21567")
     }
     
     func createExampleData() {
@@ -87,10 +92,24 @@ class WSBChatViewModel {
             guard let message = message, !message.isEmpty else {
                 return
             }
-            self?.createDataSource(text: message)
+            self?.send(message: message)
         }, onCompleted: {
             print("ok")
         }).disposed(by: disposeBag)
+    }
+    
+    func send(message: String) {
+        createDataSource(text: message)
+        DispatchQueue.global().async {
+            WSBNetworkManager.shared.send(string: message) { [weak self] (data) in
+                guard let message = (String(data: data, encoding: .utf8)) else {
+                    return
+                }
+                DispatchQueue.main.async {
+                    self?.createOtherCellModel(msg: message)
+                }
+            }
+        }
     }
     
     @objc func changeToolBarBottom(noti: Notification) {
@@ -106,6 +125,17 @@ class WSBChatViewModel {
         message.message = text
         message.type = .text
         message.user?.name = "鸣人"
+        let cellModel = WSBChatMessageCellModel(model: message)
+        cellModels.append(cellModel)
+        insertMessageRelay.accept(IndexPath(row: cellModels.count - 1, section: 0))
+    }
+    
+    func createOtherCellModel(msg: String) {
+        let message = WSBChatMessage()
+        message.message = msg
+        message.type = .text
+        message.user?.name = "啥时给"
+        message.user?.type = .other
         let cellModel = WSBChatMessageCellModel(model: message)
         cellModels.append(cellModel)
         insertMessageRelay.accept(IndexPath(row: cellModels.count - 1, section: 0))

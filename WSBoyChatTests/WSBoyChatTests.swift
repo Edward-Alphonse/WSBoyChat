@@ -13,7 +13,7 @@ class WSBoyChatTests: XCTestCase {
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        WSBLoginService.shared.login(["username": "hzc", "password": "hzc"])
+        
     }
 
     override func tearDown() {
@@ -30,6 +30,26 @@ class WSBoyChatTests: XCTestCase {
         self.measure {
             // Put the code you want to measure the time of here.
         }
+    }
+    
+    func convertIP() {
+        _ = WSBLoginService.shared.converIPToUInt32(a: 192, b: 168, c: 1, d: 8)
+        _ = FSSocketNetwork.shared.convert(ip: "192.168.1.8")
+    }
+    
+    func testBigEndianToLittleEndian() {
+        print("--------\(CFSwapInt16HostToBig(21567))")
+        print("--------\(UInt16(littleEndian: 21567))")
+        print("--------\(UInt16(bigEndian: 21567))")
+    }
+    
+    func testFSSocketNetwork() {
+        FSSocketNetwork.shared.host = "192.168.1.8"
+        FSSocketNetwork.shared.port = "21567"
+        FSSocketNetwork.shared.setupConnection()
+//        FSSocketNetwork.shared.sendTCP()
+//        FSSocketNetwork.shared.recvTCP()
+        FSSocketNetwork.shared.closeConnection()
     }
 
 }
