@@ -13,9 +13,7 @@ class WSBChatMessageCell: UITableViewCell {
     
     public enum SubviewKey: String {
         case avatarView = "avatar_view"
-        case nameLabel = "name_label"
-        case messageLabel = "message_label"
-        case gifImageView = "gif_image_view"
+        case messageView = "message_label"
     }
 
     var viewModel: WSBChatMessageCellModel? {
@@ -24,9 +22,7 @@ class WSBChatMessageCell: UITableViewCell {
         }
     }
     private var avatarView = WSBWebImageView(frame: .zero)
-    private var nameLabel = UILabel(frame: .zero)
-    private var messageLabel = UILabel(frame: .zero)
-    private var gifimageView = WSBWebImageView()
+    private var messageView = WSBMessageContentView(frame: .zero)
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -40,10 +36,7 @@ class WSBChatMessageCell: UITableViewCell {
     func loadSubviews() {
         self.backgroundColor = BACKGROUND_Color
         setupAvatarView()
-        setupNameLabel()
         setupMessageLabel()
-        setupGifImageView()
-        
     }
     
     func setupAvatarView() {
@@ -59,22 +52,9 @@ class WSBChatMessageCell: UITableViewCell {
         contentView.addSubview(avatarView)
     }
     
-    func setupNameLabel() {
-        nameLabel.font = UIFont.systemFont(ofSize: 16)
-        nameLabel.textColor = UIColor.orange
-        nameLabel.key = SubviewKey.nameLabel.rawValue
-        contentView.addSubview(nameLabel)
-    }
-    
     func setupMessageLabel() {
-        messageLabel.numberOfLines = 0
-        messageLabel.key = SubviewKey.messageLabel.rawValue
-        contentView.addSubview(messageLabel)
-    }
-    
-    func setupGifImageView() {
-        gifimageView.key = SubviewKey.gifImageView.rawValue
-        contentView.addSubview(gifimageView)
+        messageView.key = SubviewKey.messageView.rawValue
+        contentView.addSubview(messageView)
     }
     
     func setCellModel() {
@@ -85,8 +65,13 @@ class WSBChatMessageCell: UITableViewCell {
         avatarView.frame = viewModel[SubviewKey.avatarView]
 
         if viewModel.messageType == .text {
-            messageLabel.attributedText = viewModel.message
-            messageLabel.frame = viewModel[SubviewKey.messageLabel]
+            messageView.insets = viewModel.contentInsets
+            messageView.textView.insets = viewModel.textViewInsets
+            messageView.textView.textInsets = viewModel.textLabelInsets
+            messageView.type = .text
+            messageView.direction = viewModel.isMe ? .right : .left
+            messageView.attributedText = viewModel.message
+            messageView.frame = viewModel[SubviewKey.messageView]
         }
     }
     

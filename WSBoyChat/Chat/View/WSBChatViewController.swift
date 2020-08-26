@@ -62,8 +62,6 @@ class WSBChatViewController: WSBBaseViewController ,UITableViewDelegate,UITableV
                 return
             }
             self?.insertMessage(at: indexPath)
-        }, onCompleted: {
-            print("---------aaaaa")
         }).disposed(by: disposeBag)
         
         viewModel.refreshSignal.skip(1).emit(onNext: { [weak self] () in

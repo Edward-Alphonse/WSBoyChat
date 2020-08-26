@@ -9,11 +9,6 @@
 import Foundation
 import UIKit
 
-//class WSBChatSubviewFrame {
-//    var key: String?
-//    var frame: CGRect?
-//}
-
 struct WSBChatSubviewFrame {
     var key: WSBChatMessageCell.SubviewKey
     var frame: CGRect
@@ -43,7 +38,11 @@ class WSBChatMessageCellModel {
     }
     
     fileprivate var frames = [WSBChatSubviewFrame]()
-    fileprivate var inset = UIEdgeInsets(top: 4, left: 8, bottom: 4, right: 8)
+    fileprivate var insets = UIEdgeInsets(top: 4, left: 8, bottom: 4, right: 8)
+    fileprivate(set) var contentInsets = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8)
+    fileprivate(set) var textViewInsets = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 0)
+    fileprivate(set) var textLabelInsets = UIEdgeInsets(top: 4, left: 8, bottom: 4, right: 8)
+    fileprivate let avatarSize: CGFloat = 36
     
     convenience init(model: WSBChatMessage) {
         self.init()
@@ -54,10 +53,9 @@ class WSBChatMessageCellModel {
     init() {}
     
     fileprivate func layoutAvatarView() {
-        let size: CGFloat    = 36.0
-        let xOffset: CGFloat = !isMe ? inset.left : screenW - inset.right - size
-        let yOffset: CGFloat = inset.top
-        let iconFrame = CGRect(x: xOffset, y: yOffset, width: size, height: size)
+        let xOffset: CGFloat = !isMe ? insets.left : screenW - insets.right - avatarSize
+        let yOffset: CGFloat = insets.top
+        let iconFrame = CGRect(x: xOffset, y: yOffset, width: avatarSize, height: avatarSize)
         frames.append(WSBChatSubviewFrame(key: .avatarView, frame: iconFrame))
     }
     
@@ -65,22 +63,34 @@ class WSBChatMessageCellModel {
         guard let model = model else {
             return
         }
-        let padding: CGFloat = 44
+        let padding: CGFloat = avatarSize
         var frame: CGRect = .zero
         self.message = nil
         if model.type == .text, let message = model.message {
-            var xOffset: CGFloat = inset.left + padding
-            let result = Utility.stringSize(text: message, font: UIFont.systemFont(ofSize: 14), constrained: screenW - 2 * padding - inset.horizon)
-            
-            let size = result.1
             if isMe {
-                xOffset = screenW - inset.right - padding - size.width
+                contentInsets.left = 8
+                contentInsets.right = 4
+            } else {
+                contentInsets.left = 4
+                contentInsets.right = 8
             }
-            let yOffset: CGFloat = inset.top
-            frame = CGRect(x: xOffset, y: yOffset, width: size.width, height: size.height)
+            var xOffset: CGFloat = insets.left + padding
+            let constrainedWidth: CGFloat = screenW - 2 * avatarSize - insets.horizon - contentInsets.horizon - textViewInsets.horizon - textLabelInsets.horizon - 4
+            let result = Utility.stringSize(text: message, font: UIFont.systemFont(ofSize: 14), constrained: constrainedWidth)
+            
+            var size = result.1
+            size = CGSize(width: ceil(size.width), height: ceil(size.height))
+            var width: CGFloat = screenW - 2 * avatarSize - insets.horizon
+            width = min(size.width + textLabelInsets.horizon + textViewInsets.horizon + contentInsets.horizon, width)
+            let height: CGFloat = size.height + contentInsets.vertical + textViewInsets.vertical + textLabelInsets.vertical
+            if isMe {
+                xOffset = screenW - insets.right - padding - width
+            }
+            let yOffset: CGFloat = insets.top
+            frame = CGRect(x: xOffset, y: yOffset, width: width, height: height)
             self.message = result.0
         }
-        frames.append(WSBChatSubviewFrame(key: .messageLabel, frame: frame))
+        frames.append(WSBChatSubviewFrame(key: .messageView, frame: frame))
     }
     
     fileprivate func layout() {
@@ -88,9 +98,9 @@ class WSBChatMessageCellModel {
         layoutMessageLabel()
         
         let avatarHeight: CGFloat = self[WSBChatMessageCell.SubviewKey.avatarView].height
-        let messageHeight: CGFloat = self[WSBChatMessageCell.SubviewKey.messageLabel].height
+        let messageHeight: CGFloat = self[WSBChatMessageCell.SubviewKey.messageView].height
         height = max(avatarHeight, messageHeight)
-        height += inset.vertical
+        height += insets.vertical
     }
     
     subscript(key: WSBChatMessageCell.SubviewKey) -> CGRect {

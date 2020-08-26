@@ -18,4 +18,14 @@ extension UIView {
             objc_getAssociatedObject(self, &UIView.associateKey) as? String
         }
     }
+    
+//    static var viewInsetsKey: String = "UIView.insets"
+//    var insets: UIEdgeInsets? {
+//        set {
+//            objc_setAssociatedObject(self, &UIView.viewInsetsKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+//        }
+//        get {
+//            objc_getAssociatedObject(self, &UIView.viewInsetsKey) as? UIEdgeInsets
+//        }
+//    }
 }

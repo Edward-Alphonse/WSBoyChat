@@ -132,6 +132,7 @@
 		BA31163B24F185FB0012C6A2 /* WSBWebImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA31163A24F185FB0012C6A2 /* WSBWebImageView.swift */; };
 		BA31163D24F2D8B00012C6A2 /* WSBChatMessageCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA31163C24F2D8B00012C6A2 /* WSBChatMessageCellModel.swift */; };
 		BA31164124F2DB530012C6A2 /* UIView+Frame.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA31164024F2DB530012C6A2 /* UIView+Frame.swift */; };
+		BA31164324F56B620012C6A2 /* WSBMessageContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA31164224F56B620012C6A2 /* WSBMessageContentView.swift */; };
 		BA55BBB224D1D3BB00FF3ADD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA55BBB124D1D3BB00FF3ADD /* AppDelegate.swift */; };
 		BA55BBB424D1D3BB00FF3ADD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA55BBB324D1D3BB00FF3ADD /* ViewController.swift */; };
 		BA55BBB724D1D3BB00FF3ADD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA55BBB524D1D3BB00FF3ADD /* Main.storyboard */; };
@@ -307,6 +308,7 @@
 		BA31163A24F185FB0012C6A2 /* WSBWebImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSBWebImageView.swift; sourceTree = "<group>"; };
 		BA31163C24F2D8B00012C6A2 /* WSBChatMessageCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSBChatMessageCellModel.swift; sourceTree = "<group>"; };
 		BA31164024F2DB530012C6A2 /* UIView+Frame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Frame.swift"; sourceTree = "<group>"; };
+		BA31164224F56B620012C6A2 /* WSBMessageContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSBMessageContentView.swift; sourceTree = "<group>"; };
 		BA55BBAE24D1D3BB00FF3ADD /* WSBoyChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WSBoyChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA55BBB124D1D3BB00FF3ADD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BA55BBB324D1D3BB00FF3ADD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -396,6 +398,7 @@
 			children = (
 				BA31153524E5B6700012C6A2 /* WSBChatViewController.swift */,
 				BA31153C24E5B8140012C6A2 /* WSBChatMessageCell.swift */,
+				BA31164224F56B620012C6A2 /* WSBMessageContentView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1034,6 +1037,7 @@
 			files = (
 				BA31162024E5B8730012C6A2 /* WSBToolBarView.swift in Sources */,
 				E8C3266324DADDF3008CA24D /* WSBBaseViewController.swift in Sources */,
+				BA31164324F56B620012C6A2 /* WSBMessageContentView.swift in Sources */,
 				BA55BBB424D1D3BB00FF3ADD /* ViewController.swift in Sources */,
 				E8C3337124DBF86A008CA24D /* WSBLoginInputView.swift in Sources */,
 				E8C3266924DAEE2B008CA24D /* Utility.swift in Sources */,

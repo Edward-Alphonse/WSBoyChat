@@ -90,12 +90,13 @@ extension Utility {
         var attributes = [NSAttributedString.Key: Any]()
         attributes[NSAttributedString.Key.font] = font
         let attributeString = NSAttributedString(string: text, attributes: attributes)
-        let size = attributeString.boundingRect(with: CGSize(width: width, height: 999), options: NSStringDrawingOptions.usesFontLeading, context: nil).size
+        let options : NSStringDrawingOptions = [.usesLineFragmentOrigin, .usesFontLeading]
+        let size = attributeString.boundingRect(with: CGSize(width: width, height: 999), options: options, context: nil).size
         return (attributeString, size)
     }
 }
 
-extension UIEdgeInsets {
+public extension UIEdgeInsets {
     var horizon: CGFloat {
         return self.left + self.right
     }
