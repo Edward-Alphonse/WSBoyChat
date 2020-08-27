@@ -38,9 +38,9 @@ class WSBChatMessageCellModel {
     }
     
     fileprivate var frames = [WSBChatSubviewFrame]()
-    fileprivate var insets = UIEdgeInsets(top: 4, left: 8, bottom: 4, right: 8)
+    fileprivate var insets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
     fileprivate(set) var contentInsets = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 8)
-    fileprivate(set) var textViewInsets = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 0)
+    fileprivate(set) var textViewInsets = UIEdgeInsets(top: 0, left: 2, bottom: 0, right: 0)
     fileprivate(set) var textLabelInsets = UIEdgeInsets(top: 4, left: 8, bottom: 4, right: 8)
     fileprivate let avatarSize: CGFloat = 36
     
@@ -81,7 +81,7 @@ class WSBChatMessageCellModel {
             var size = result.1
             size = CGSize(width: ceil(size.width), height: ceil(size.height))
             var width: CGFloat = screenW - 2 * avatarSize - insets.horizon
-            width = min(size.width + textLabelInsets.horizon + textViewInsets.horizon + contentInsets.horizon, width)
+            width = min(size.width + textLabelInsets.horizon + textViewInsets.horizon + contentInsets.horizon + 4, width)
             let height: CGFloat = size.height + contentInsets.vertical + textViewInsets.vertical + textLabelInsets.vertical
             if isMe {
                 xOffset = screenW - insets.right - padding - width

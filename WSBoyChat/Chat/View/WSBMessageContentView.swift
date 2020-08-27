@@ -102,6 +102,7 @@ class WSBMessageTextView: UIView {
     }
     var insets = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
     var textInsets = UIEdgeInsets(top: 2, left: 2, bottom: 2, right: 2)
+    var yOffset: CGFloat = 12
     var attributedText: NSAttributedString? {
            didSet {
                textLabel.attributedText = attributedText
@@ -109,8 +110,21 @@ class WSBMessageTextView: UIView {
        }
     var contentView = UIView(frame: .zero)
     var textLabel = UILabel(frame: .zero)
-    var arrowView = UIView(frame: .zero)
-    var direction = Direction.none
+    var arrowView = FSArrowView(frame: .zero)
+    var direction = Direction.none {
+        didSet {
+            switch direction {
+            case .left:
+                arrowView.direction = .left
+                arrowView.isHidden = false
+            case .right:
+                arrowView.direction = .right
+                arrowView.isHidden = false
+            default:
+                arrowView.isHidden = true
+            }
+        }
+    }
     let arrowWidth: CGFloat = 4
     let arrowHeight: CGFloat = 8
     
@@ -137,12 +151,12 @@ class WSBMessageTextView: UIView {
         textLabel.numberOfLines = 0
         contentView.layer.cornerRadius = 5
         contentView.clipsToBounds = true
-        contentView.backgroundColor = .green
+        contentView.backgroundColor = .white
         contentView.addSubview(textLabel)
     }
     
     func setupArrowView() {
-        arrowView.backgroundColor = .blue
+        arrowView.backgroundColor = .white
         addSubview(arrowView)
     }
     
@@ -150,12 +164,12 @@ class WSBMessageTextView: UIView {
         super.layoutSubviews()
         switch direction {
         case .left:
-            arrowView.frame = CGRect(x: insets.left, y: insets.top, width: arrowWidth, height: arrowHeight)
+            arrowView.frame = CGRect(x: insets.left, y: insets.top + yOffset, width: arrowWidth, height: arrowHeight)
             contentView.frame = CGRect(x: arrowView.right, y: insets.top, width: self.width - insets.horizon - arrowWidth, height: self.height - insets.vertical)
             
         case .right:
             contentView.frame = CGRect(x: insets.left, y: insets.top, width: self.width - insets.horizon - arrowWidth, height: self.height - insets.vertical)
-            arrowView.frame = CGRect(x: contentView.right, y: insets.top, width: arrowWidth, height: arrowHeight)
+            arrowView.frame = CGRect(x: contentView.right, y: insets.top + yOffset, width: arrowWidth, height: arrowHeight)
         case .none:
             return
             

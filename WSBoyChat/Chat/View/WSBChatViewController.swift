@@ -81,6 +81,7 @@ class WSBChatViewController: WSBBaseViewController ,UITableViewDelegate,UITableV
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(WSBChatMessageCell.self, forCellReuseIdentifier: WSBChatMessageCell.identifier)
+        tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.width, height: 14))
         self.view.addSubview(tableView)
         
         //单击手势,用于退出键盘

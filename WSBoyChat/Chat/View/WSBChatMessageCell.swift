@@ -41,6 +41,7 @@ class WSBChatMessageCell: UITableViewCell {
     
     func setupAvatarView() {
         //头像
+        avatarView.placeholderName = "wsb_default_avatar"
         avatarView.layer.cornerRadius  = 5
         avatarView.layer.masksToBounds = true
         avatarView.layer.borderColor = UIColor.black.withAlphaComponent(0.3).cgColor

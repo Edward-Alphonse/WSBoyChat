@@ -9,13 +9,15 @@
 import Foundation
 import Darwin
 
-typealias WSBLoginHandler = (Data?, URLResponse?, Error?) -> Void
+typealias WSBLoginHandler = ((Data?, URLResponse?, Error?) -> Void)
 
 class WSBLoginService {
     static let shared = WSBLoginService()
     
-    var host: String = ""
-    var port: String = ""
+    static func performActionAfterLogin(_ parameters: [String: Any], action: ((Bool) -> Void)) {
+        
+    }
+    
     
     func register(_ parameters: [String: Any], _ completionHandler: @escaping WSBLoginHandler) {
         guard let url = URL(string: WSBURL.registerURL) else {
@@ -48,7 +50,6 @@ class WSBLoginService {
     
     func converIPToUInt32(a: Int, b: Int, c: Int, d: Int) -> in_addr {
         let value = (a << 0) | (b << 8) | (c << 16) | (d << 24)
-        print("-----------\(value)")
         let addr = in_addr_t(value)
         return Darwin.in_addr(s_addr: addr)
     }
