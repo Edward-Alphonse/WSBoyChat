@@ -35,7 +35,7 @@ class WSBChatViewModel {
     }
     
     func initNetwork() {
-        WSBNetworkManager.shared.connect(host: "192.168.1.8", port: "21567")
+//        WSBNetworkManager.shared.connect(host: "192.168.1.8", port: "21567")
     }
     
     func createExampleData() {
@@ -101,14 +101,14 @@ class WSBChatViewModel {
     func send(message: String) {
         createDataSource(text: message)
         DispatchQueue.global().async {
-            WSBNetworkManager.shared.send(string: message) { [weak self] (data) in
-                guard let message = (String(data: data, encoding: .utf8)) else {
-                    return
-                }
-                DispatchQueue.main.async {
-                    self?.createOtherCellModel(msg: message)
-                }
-            }
+//            WSBNetworkManager.shared.send(string: message) { [weak self] (data) in
+//                guard let message = (String(data: data, encoding: .utf8)) else {
+//                    return
+//                }
+//                DispatchQueue.main.async {
+//                    self?.createOtherCellModel(msg: message)
+//                }
+//            }
         }
     }
     

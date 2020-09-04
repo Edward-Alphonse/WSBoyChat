@@ -23,7 +23,7 @@ class ViewController: UIViewController {
         button.setTitleColor(.black, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16)
         button.layer.borderWidth = 0.5
-        button.layer.borderColor = UIColor.black.cgColor
+        button.layer.borderColor = UIColor.black.withAlphaComponent(0.5).cgColor
         button.layer.cornerRadius = 15
         self.view.addSubview(button)
         button.snp.makeConstraints { (maker) in

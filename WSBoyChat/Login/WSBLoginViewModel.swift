@@ -93,17 +93,13 @@ class WSBLoginViewAccountCellModel: WSBLoginViewCellModelType {
     var title: String = "账号"
     var placeholder: String = "请输入Email账号"
     
-    init() {
-        
-    }
+    init() {}
 }
 
 class WSBLoginViewPasswordCellModel: WSBLoginViewCellModelType {
     var title: String = "密码"
     var placeholder: String = "请输入密码"
-    init() {
-        
-    }
+    init() {}
     
 }
 
