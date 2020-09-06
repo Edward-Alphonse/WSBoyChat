@@ -30,7 +30,7 @@ class WSBChatViewModel {
     init() {
         createExampleData()
         addObsevers()
-        initNetwork()
+//        initNetwork()
         setupBindings()
     }
     

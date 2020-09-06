@@ -13,7 +13,7 @@ import RxCocoa
 class WSBChatViewController: WSBBaseViewController ,UITableViewDelegate,UITableViewDataSource, UIGestureRecognizerDelegate, LiuqsEmotionKeyBoardDelegate {
     
     var viewModel = WSBChatViewModel()
-    var toolBarView: WSBToolBarView = WSBToolBarView(frame: .zero)
+    var toolBarView: WSBToolsBarView = WSBToolsBarView(frame: .zero)
     var emotionview = LiuqsEmotionKeyBoard(frame: .zero)
     var keyBoardH:CGFloat = CGFloat()
     var tableView:UITableView = UITableView()
@@ -301,9 +301,11 @@ class WSBChatViewController: WSBBaseViewController ,UITableViewDelegate,UITableV
 }
 
 
-extension WSBChatViewController: WSBToolBarDelegate {
-    func toolBarDidClick(emotionButton: UIButton) {
-        toolBarView.textView.becomeFirstResponder()
+extension WSBChatViewController: WSBToolsBarDelegate {
+    func toolsBar(_ toolsBar: WSBToolsBarView, didClickOn button: WSBToolsButton) {
+        if button.category == .emotion {
+            didClick(emotionButton: button)
+        }
     }
     
     func toolBarSendMessage() {
@@ -315,6 +317,12 @@ extension WSBChatViewController: WSBToolBarDelegate {
     
     func toolBarInputDidChange(_ textView: UITextView) {
         changeToolBarFrame(contentSize: textView.contentSize)
+    }
+}
+
+extension WSBChatViewController {
+    func didClick(emotionButton: UIButton) {
+        toolBarView.textView.becomeFirstResponder()
     }
 }
 
