@@ -133,6 +133,10 @@
 		BA31163D24F2D8B00012C6A2 /* WSBChatMessageCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA31163C24F2D8B00012C6A2 /* WSBChatMessageCellModel.swift */; };
 		BA31164124F2DB530012C6A2 /* UIView+Frame.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA31164024F2DB530012C6A2 /* UIView+Frame.swift */; };
 		BA31164324F56B620012C6A2 /* WSBMessageContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA31164224F56B620012C6A2 /* WSBMessageContentView.swift */; };
+		BA3116472506A3B70012C6A2 /* NetworkReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3116462506A3B70012C6A2 /* NetworkReachabilityManager.swift */; };
+		BA3116492506A4240012C6A2 /* Protected.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA3116482506A4240012C6A2 /* Protected.swift */; };
+		BA31164B2506AD440012C6A2 /* WSBEmotionPickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA31164A2506AD440012C6A2 /* WSBEmotionPickView.swift */; };
+		BA31164D2506AD6F0012C6A2 /* WSBSelectMoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA31164C2506AD6F0012C6A2 /* WSBSelectMoreView.swift */; };
 		BA55BBB224D1D3BB00FF3ADD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA55BBB124D1D3BB00FF3ADD /* AppDelegate.swift */; };
 		BA55BBB424D1D3BB00FF3ADD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA55BBB324D1D3BB00FF3ADD /* ViewController.swift */; };
 		BA55BBB724D1D3BB00FF3ADD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA55BBB524D1D3BB00FF3ADD /* Main.storyboard */; };
@@ -310,6 +314,10 @@
 		BA31163C24F2D8B00012C6A2 /* WSBChatMessageCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSBChatMessageCellModel.swift; sourceTree = "<group>"; };
 		BA31164024F2DB530012C6A2 /* UIView+Frame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Frame.swift"; sourceTree = "<group>"; };
 		BA31164224F56B620012C6A2 /* WSBMessageContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSBMessageContentView.swift; sourceTree = "<group>"; };
+		BA3116462506A3B70012C6A2 /* NetworkReachabilityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkReachabilityManager.swift; sourceTree = "<group>"; };
+		BA3116482506A4240012C6A2 /* Protected.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Protected.swift; sourceTree = "<group>"; };
+		BA31164A2506AD440012C6A2 /* WSBEmotionPickView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSBEmotionPickView.swift; sourceTree = "<group>"; };
+		BA31164C2506AD6F0012C6A2 /* WSBSelectMoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WSBSelectMoreView.swift; sourceTree = "<group>"; };
 		BA55BBAE24D1D3BB00FF3ADD /* WSBoyChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WSBoyChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA55BBB124D1D3BB00FF3ADD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BA55BBB324D1D3BB00FF3ADD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -418,6 +426,8 @@
 				BA3115B824E5B8730012C6A2 /* LiuqsChageEmotionStrTool.swift */,
 				BA3115B924E5B8730012C6A2 /* LiuqsGifEmoji.plist */,
 				BA3115BA24E5B8730012C6A2 /* LiuqsTextAttachment.swift */,
+				BA31164A2506AD440012C6A2 /* WSBEmotionPickView.swift */,
+				BA31164C2506AD6F0012C6A2 /* WSBSelectMoreView.swift */,
 			);
 			path = LiuqsEmotions;
 			sourceTree = "<group>";
@@ -667,6 +677,8 @@
 		E8C3FD3A24D9AD4E008CA24D /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				BA3116482506A4240012C6A2 /* Protected.swift */,
+				BA3116462506A3B70012C6A2 /* NetworkReachabilityManager.swift */,
 				E8C3FD3624D9AD2E008CA24D /* WSBLoginViewController.swift */,
 				E8C3FD3824D9AD44008CA24D /* WSBLoginViewModel.swift */,
 				E8C3337024DBF86A008CA24D /* WSBLoginInputView.swift */,
@@ -1038,6 +1050,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA3116472506A3B70012C6A2 /* NetworkReachabilityManager.swift in Sources */,
 				BA31162024E5B8730012C6A2 /* WSBToolBarView.swift in Sources */,
 				E8C3266324DADDF3008CA24D /* WSBBaseViewController.swift in Sources */,
 				BA31164324F56B620012C6A2 /* WSBMessageContentView.swift in Sources */,
@@ -1055,15 +1068,18 @@
 				BA55BBB224D1D3BB00FF3ADD /* AppDelegate.swift in Sources */,
 				BA31154024E5B8140012C6A2 /* WSBChatMessageCell.swift in Sources */,
 				E8C3FD3724D9AD2E008CA24D /* WSBLoginViewController.swift in Sources */,
+				BA31164D2506AD6F0012C6A2 /* WSBSelectMoreView.swift in Sources */,
 				E8C3FD3C24DA732C008CA24D /* WSBNavigationViewController.swift in Sources */,
 				E8C3266524DAE33E008CA24D /* WSBNavigationBar.swift in Sources */,
 				E8C3FD3924D9AD44008CA24D /* WSBLoginViewModel.swift in Sources */,
 				BA31163724E5BE2E0012C6A2 /* WSBChatMessage.swift in Sources */,
 				E884485124F664730070C963 /* FSArrowView.swift in Sources */,
 				BA31153624E5B6710012C6A2 /* WSBChatViewController.swift in Sources */,
+				BA3116492506A4240012C6A2 /* Protected.swift in Sources */,
 				E8C3783F24DC2E93008CA24D /* WSBLoginService.swift in Sources */,
 				BA31163124E5BB2B0012C6A2 /* UIImage+Extension.swift in Sources */,
 				BA31163B24F185FB0012C6A2 /* WSBWebImageView.swift in Sources */,
+				BA31164B2506AD440012C6A2 /* WSBEmotionPickView.swift in Sources */,
 				E8E5C1BD24E64F53001C6509 /* FSToaster.swift in Sources */,
 				BA3115F924E5B8730012C6A2 /* LiuqsTextAttachment.m in Sources */,
 				BA31163D24F2D8B00012C6A2 /* WSBChatMessageCellModel.swift in Sources */,

@@ -170,7 +170,8 @@ public class FSSocketNetwork {
         let pointer: UnsafePointer<sockaddr> = withUnsafePointer(to: &sock4, {$0.withMemoryRebound(to: sockaddr.self, capacity: 1, {$0})})
         let result = connect(socketFD, pointer, socklen_t(MemoryLayout.size(ofValue: sock4)))
         guard result != -1 else {
-            fatalError("Error in connect() function code is \(errno)")
+//            fatalError("Error in connect() function code is \(errno)")
+            return
         }
         self.socketFD = socketFD
     }

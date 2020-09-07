@@ -30,11 +30,14 @@ class WSBChatViewModel {
     init() {
         createExampleData()
         addObsevers()
-//        initNetwork()
+        initNetwork()
         setupBindings()
     }
     
     func initNetwork() {
+        NetworkReachabilityManager.default?.startListening(onUpdatePerforming: { (status) in
+            print("---------\(status)")
+        })
         WSBNetworkManager.shared.connect(host: "192.168.1.8", port: "21567")
     }
     
